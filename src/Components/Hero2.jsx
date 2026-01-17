@@ -39,6 +39,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
     background-color: white;
     background-image: url(${gridbg});
     background-size: cover;
