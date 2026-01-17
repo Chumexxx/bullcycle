@@ -4,7 +4,7 @@ import power from '../assets/power.svg'
 import download from '../assets/download.svg'
 import herobg from '../assets/herobg.svg'
 
-const Hero = () => {
+const Hero1 = () => {
   return (
     <Wrapper>
       <Header />
@@ -50,9 +50,9 @@ const Wrapper = styled.div`
     background-color: #030013;
     overflow: hidden;
 
-    /* @media (max-width: 320px) {
-        height: 70vh;
-    } */
+    @media (max-width: 425px) {
+        height: auto;
+    }
 `
 
 const PageContent = styled.div`
@@ -381,4 +381,4 @@ const HeroImage = styled.div`
     }
 `
 
-export default Hero
+export default Hero1
