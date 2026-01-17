@@ -80,6 +80,7 @@ const PageContent = styled.div`
     flex-direction: column;
     justify-content: left;
     padding: 100px;
+    height: 100%;
 
     @media (max-width: 1440px) {
         padding: 90px;
@@ -98,12 +99,14 @@ const PageContent = styled.div`
     }
 
     @media (max-width: 425px) {
-        padding: 30px;
+        padding: 20px;
         align-items: center;
+        gap: 40px;
+        /* justify-content: space-evenly; */
     }
 
     @media (max-width: 320px) {
-        padding: 20px;
+        padding: 15px;
     }
 `
 
@@ -164,10 +167,11 @@ const Paragraph1 = styled.div`
     @media (max-width: 425px) {
         text-align: center;
         p {
-            font-size: 14px;
+            font-size: 12px;
         }
         h1 {
-            font-size: 20px;
+            font-size: 18px;
+            margin-bottom: 0px;
             br {
                 display: none;
             }
@@ -176,10 +180,10 @@ const Paragraph1 = styled.div`
 
     @media (max-width: 320px) {
         p {
-            font-size: 12px;
+            font-size: 11px;
         }
         h1 {
-            font-size: 28px;
+            font-size: 16px;
         }
     }
 `
@@ -222,13 +226,15 @@ const Paragraph2 = styled.div`
         p {
             text-align: left;
             font-size: 14px;
-            line-height: 140%;
+            font-weight: 200;
+            line-height: 130%;
         }
     }
 
     @media (max-width: 320px) {
+        margin-top: 8px;
         p {
-            font-size: 12px;
+            font-size: 10px;
         }
     }
 `
@@ -263,14 +269,16 @@ const Paragraph3 = styled.div`
     @media (max-width: 425px) {
         flex-direction: column;
         align-items: center;
-        margin-top: 40px;
+        margin-top: 0px;
         position: relative;
-        height: 450px;
+        height: 200px;
+        flex-shrink: 0;
         width: 100%;
     }
 
     @media (max-width: 320px) {
-        height: 450px;
+        height: 280px;
+        margin-top: 15px;
     }
 `
 
@@ -325,37 +333,39 @@ const Mission = styled.div`
     }
     @media (max-width: 425px) {
         position: absolute;
-        bottom: 80px;
-        left: 7%;
+        bottom: 20px;
+        left:3%;
         background-color: rgba(255, 255, 255, 0.11);
         border: 2px solid #2400FF;
         border-radius: 12px;
-        padding: 5px;
-        width: 40%;
+        padding: 8px;
+        width: 42%;
         max-width: 180px;
         transform: rotate(-10deg);
         transform-origin: bottom right;
         z-index: 1;
         h1 {
             color: #2400FF;
-            font-size: 24px;
+            font-size: 18px;
+            margin-bottom: 5px;
         }
         p {
             color: white;
             text-align: left;
-            line-height: 140%;
-            font-size: 12px;
+            line-height: 130%;
+            font-size: 10px;
         }
     }
     @media (max-width: 320px) {
-        width: 45%;
-        max-width: 160px;
-        left: 2%;
+        width: 43%;
+        max-width: 140px;
+        left: 3%;
+        padding: 6px;
         h1 {
-            font-size: 20px;
+            font-size: 16px;
         }
         p {
-            font-size: 11px;
+            font-size: 9px;
         }
     }
 `
@@ -411,37 +421,39 @@ const Vision = styled.div`
     }
     @media (max-width: 425px) {
         position: absolute;
-        bottom: 80px;
-        right:7%;
+        bottom: 20px;
+        right: 3%;
         background-color: rgba(255, 255, 255, 0.11);
         border: 2px solid #2400FF;
         border-radius: 12px;
-        padding: 5px;
-        width: 40%;
+        padding: 8px;
+        width: 42%;
         max-width: 180px;
         transform: rotate(10deg);
         transform-origin: bottom left;
         z-index: 2;
         h1 {
             color: #2400FF;
-            font-size: 24px;
+            font-size: 18px;
+            margin-bottom: 5px;
         }
         p {
             color: white;
             text-align: left;
-            line-height: 140%;
-            font-size: 12px;
+            line-height: 130%;
+            font-size: 10px;
         }
     }
     @media (max-width: 320px) {
-        width: 45%;
-        max-width: 160px;
-        right: 2%;
+        width: 43%;
+        max-width: 140px;
+        right: 3%;
+        padding: 6px;
         h1 {
-            font-size: 20px;
+            font-size: 16px;
         }
         p {
-            font-size: 11px;
+            font-size: 9px;
         }
     }
 `

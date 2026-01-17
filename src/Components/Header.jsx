@@ -1,13 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import bullcycle from '../assets/bullcycle.svg'
 import styled from 'styled-components'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuRef = useRef(null)
+  const hamburgerRef = useRef(null)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isMenuOpen && 
+        menuRef.current && 
+        !menuRef.current.contains(event.target) &&
+        hamburgerRef.current &&
+        !hamburgerRef.current.contains(event.target)
+      ) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMenuOpen])
 
   return (
     <Wrapper>
@@ -16,13 +37,13 @@ const Header = () => {
                 <img src={bullcycle} alt="BullCycle Logo" />
             </Logo>
 
-            <Hamburger onClick={toggleMenu} $isOpen={isMenuOpen}>
+            <Hamburger ref={hamburgerRef} onClick={toggleMenu} $isOpen={isMenuOpen}>
                 <span></span>
                 <span></span>
                 <span></span>
             </Hamburger>
 
-            <Tags $isOpen={isMenuOpen}>
+            <Tags ref={menuRef} $isOpen={isMenuOpen}>
                 <CloseButton onClick={toggleMenu}>
                     <span></span>
                     <span></span>
@@ -217,12 +238,13 @@ const Tags = styled.div`
         height: auto;
         width: 60%;
         max-width: 250px;
-        background-color: #dbd3d3;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
         flex-direction: column;
         justify-content: flex-start;
         align-items: left;
         gap: 30px;
-        padding: 80px 30px 40px 30px;
+        padding: 30px 65px 35px 25px;
         transform: ${props => props.$isOpen ? 'translateX(0)' : 'translateX(100%)'};
         transition: transform 0.3s ease;
         z-index: 1000;
@@ -242,7 +264,7 @@ const Tags = styled.div`
     @media (max-width: 480px) {
         width: 70%;
         max-width: 220px;
-        padding: 70px 25px 35px 25px;
+        padding: 30px 65px 35px 25px;
         gap: 25px;
 
         a {
