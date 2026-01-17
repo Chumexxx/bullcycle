@@ -38,7 +38,7 @@ const Header = () => {
 }
 
 const Wrapper = styled.div`
-    margin-top: 20px;
+    margin-top: 50px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -46,7 +46,7 @@ const Wrapper = styled.div`
     background-color: transparent;
 
     @media (max-width: 768px) {
-        margin-top: 10px;
+        margin-top: 50px;
     }
 `
 
@@ -59,6 +59,16 @@ const HeaderDiv = styled.div`
     padding: 20px 50px;
     background-color: transparent;
     position: relative;
+
+    @media (max-width: 2560px) {
+        width: 85%;
+        padding: 20px 30px;
+    }
+
+    @media (max-width: 1440px) {
+        width: 85%;
+        padding: 20px 30px;
+    }
 
     @media (max-width: 1024px) {
         width: 85%;
@@ -79,19 +89,43 @@ const HeaderDiv = styled.div`
 const Logo = styled.div`
     img{
         background-color: transparent;
-        height: 30px;
+        height: 70px;
         width: auto;
+    }
+
+    @media (max-width: 2560px) {
+        img {
+            height: 100px;
+        }
+    }
+
+    @media (max-width: 1440px) {
+        img {
+            height: 100px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        img {
+            height: 100px;
+        }
     }
 
     @media (max-width: 768px) {
         img {
-            height: 25px;
+            height: 70px;
         }
     }
 
     @media (max-width: 480px) {
         img {
-            height: 20px;
+            height: 50px;
+        }
+    }
+
+    @media (max-width: 425px) {
+        img {
+            height: 50px;
         }
     }
 `
