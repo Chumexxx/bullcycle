@@ -16,12 +16,12 @@ const Hero4 = () => {
     {
       icon: <img src={document} alt="" />,
       title: 'Blockchain Transparency',
-      text: 'Smart contracts and public ledgers that make justice programmable and corruption obsolete.'
+      text: 'Smart contracts and public ledgers that make justice programmable and corruption obsolete'
     },
     {
       icon: <img src={intelligent} alt="" />,
       title: 'Intelligent Systems',
-      text: 'AI models that ensure fair distribution, accountability, and productivity-based growth.'
+      text: 'AI models that ensure fair distribution, accountability, and productivity-based growth'
     },
     {
       icon: <img src={virtue} alt="" />,
@@ -102,7 +102,7 @@ const Wrapper = styled.div`
 `
 
 const PageContent = styled.div`
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -240,7 +240,7 @@ const Paragraph1 = styled.div`
             font-size: 14px;
         }
         h1 {
-            font-size: 28px;
+            font-size: 24px;
         }
     }
 
@@ -310,7 +310,6 @@ const Paragraph2 = styled.div`
 
 const Cards = styled.div`
     width: 100%;
-    max-width: 1400px;
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -349,7 +348,7 @@ const Cards = styled.div`
 
 const Card = styled.div`
     flex: 1;
-    background-color: white;
+    background-color: transparent;
     border-radius: 12px;
     padding: 30px;
     display: flex;
@@ -529,7 +528,6 @@ const CardText = styled.p`
     }
 
     @media (max-width: 425px) {
-        /* display: none; */
         color: white;
     }
 `

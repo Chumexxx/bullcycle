@@ -107,7 +107,6 @@ const PageContent = styled.div`
         padding: 20px;
         align-items: center;
         gap: 40px;
-        /* justify-content: space-evenly; */
     }
 
     @media (max-width: 320px) {
@@ -185,10 +184,10 @@ const Paragraph1 = styled.div`
 
     @media (max-width: 320px) {
         p {
-            font-size: 11px;
+            font-size: 12px;
         }
         h1 {
-            font-size: 16px;
+            font-size: 24px;
         }
     }
 `
@@ -230,16 +229,18 @@ const Paragraph2 = styled.div`
         text-align: center;
         p {
             text-align: left;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 200;
-            line-height: 130%;
+            line-height: 140%;
         }
     }
 
     @media (max-width: 320px) {
-        margin-top: 8px;
         p {
-            font-size: 10px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 140%;
+            margin-bottom: 0px;
         }
     }
 `

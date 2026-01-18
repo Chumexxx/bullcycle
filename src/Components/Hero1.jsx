@@ -155,11 +155,11 @@ const Texts = styled.div`
     @media (max-width: 320px) {
         width: 300px;
         h1 {
-            font-size: 25px;
+            font-size: 24px;
             text-align: center;
         }
         p {
-            font-size: 10px;
+            font-size: 12px;
             text-align: center;
         }
     }

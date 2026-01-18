@@ -58,7 +58,7 @@ const Wrapper = styled.div`
 `
 
 const PageContent = styled.div`
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -214,10 +214,10 @@ const ProblemParagraph = styled.div`
 
     @media (max-width: 320px) {
         p {
-            font-size: 12px;
+            font-size: 14px;
         }
         h1 {
-            font-size: 28px;
+            font-size: 24px;
         }
     }
 `
@@ -272,8 +272,12 @@ const ExplanationParagraph = styled.div`
     }
 
     @media (max-width: 320px) {
+        width: 100%;
+        text-align: center;
         p {
             font-size: 12px;
+            line-height: 140%;
+            text-align: center
         }
     }
 `
