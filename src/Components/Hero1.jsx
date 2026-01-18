@@ -148,6 +148,7 @@ const Texts = styled.div`
         }
         p {
             text-align: center;
+            line-height: 140%;
         }
     }
 

@@ -10,9 +10,9 @@ const Hero2 = () => {
             <Paragraphs>
                 <ProblemParagraph>
                     <p>The problem</p>
-                    <h4>
+                    <h1>
                         OUR TOOLS ARE EVOLVING FASTER THAN OUR VALUES
-                    </h4>
+                    </h1>
                 </ProblemParagraph>
 
                 <ExplanationParagraph>
@@ -46,13 +46,18 @@ const Wrapper = styled.div`
     background-position: center;
     background-repeat: no-repeat;
 
+    @media (max-width: 2560px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     @media (max-width: 425px) {
         height: auto;
     }
 `
 
 const PageContent = styled.div`
-    margin-top: 150px;
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -62,6 +67,12 @@ const PageContent = styled.div`
 
     img{
         width: 800px;
+    }
+
+    @media (max-width: 2560px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     @media (max-width: 1440px) {
@@ -97,9 +108,9 @@ const PageContent = styled.div`
     }
 
     @media (max-width: 425px) {
-        margin-top: 50px;
+        margin-top: 0px;
         width: 90%;
-        gap: 25px;
+        gap: 0px;
         img {
             width: 100%;
             max-width: 350px;
@@ -140,7 +151,7 @@ const ProblemParagraph = styled.div`
         color: black;
     }
 
-    h4{
+    h1{
         margin-top: 0%;
         font-family: 'Bebas Neue', Regular;
         font-weight: 400;
@@ -155,7 +166,7 @@ const ProblemParagraph = styled.div`
         p {
             font-size: 18px;
         }
-        h4 {
+        h1 {
             font-size: 56px;
         }
     }
@@ -165,7 +176,7 @@ const ProblemParagraph = styled.div`
         p {
             font-size: 16px;
         }
-        h4 {
+        h1 {
             font-size: 48px;
         }
     }
@@ -175,7 +186,7 @@ const ProblemParagraph = styled.div`
         p {
             font-size: 14px;
         }
-        h4 {
+        h1 {
             font-size: 40px;
         }
     }
@@ -185,7 +196,7 @@ const ProblemParagraph = styled.div`
         p {
             font-size: 13px;
         }
-        h4 {
+        h1 {
             font-size: 36px;
         }
     }
@@ -196,7 +207,7 @@ const ProblemParagraph = styled.div`
         p {
             font-size: 14px;
         }
-        h4 {
+        h1 {
             font-size: 24px;
         }
     }
@@ -205,7 +216,7 @@ const ProblemParagraph = styled.div`
         p {
             font-size: 12px;
         }
-        h4 {
+        h1 {
             font-size: 28px;
         }
     }
@@ -256,7 +267,7 @@ const ExplanationParagraph = styled.div`
         p {
             font-size: 12px;
             line-height: 140%;
-            text-align: justify
+            text-align: left
         }
     }
 

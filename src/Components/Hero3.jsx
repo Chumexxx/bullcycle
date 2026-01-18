@@ -82,6 +82,11 @@ const PageContent = styled.div`
     padding: 100px;
     height: 100%;
 
+    @media (max-width: 2560px) {
+        display: flex;
+        justify-content: center;
+    }
+
     @media (max-width: 1440px) {
         padding: 90px;
     }
@@ -170,7 +175,7 @@ const Paragraph1 = styled.div`
             font-size: 12px;
         }
         h1 {
-            font-size: 18px;
+            font-size:24px;
             margin-bottom: 0px;
             br {
                 display: none;
