@@ -330,7 +330,7 @@ const CoinsSection = styled.div`
 const Navigations = styled.div`
     display: flex;
     gap: 20px;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     
     img {

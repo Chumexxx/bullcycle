@@ -145,6 +145,7 @@ const Paragraph = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 30px;
 
     @media (max-width: 1440px) {
