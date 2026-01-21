@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import globe from '../assets/globe.svg'
 import bullcycle from '../assets/bullcycle.svg'
-import emailblack from '../assets/emailblack.svg'
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -19,19 +18,13 @@ const Footer = () => {
                     <p>
                         Join an ecosystem rooted in purpose, transparency, and innovation. A comprehensive ecosystem leveraging blockchain, AI, ethics, and next-generation finance to restore the human way of living
                     </p>
-                </Paragraph>    
+                </Paragraph>
 
-                <ButtonDiv>
+                <All1>
                     <p>
-                        Want to leave feedback?
+                        2026. All Rights Reserved
                     </p>
-                    <a href="mailto:bullcycle070@gmail.com">
-                        <button>
-                            <img src={emailblack} alt="" />
-                            <p>Send us an email</p>
-                        </button>
-                    </a>
-                </ButtonDiv>
+                </All1>
 
             </LeftDiv>
 
@@ -46,8 +39,7 @@ const Footer = () => {
                         <Link to="/legal-notice"> <p><li>Legal Notices</li></p> </Link> 
                         <a href="#"><p><li>Privacy Poilcy</li></p></a> 
                         <a href="#"><p><li>AI Use & Limitation</li></p></a> 
-                        <li><p id='all' style={{color: "#2400FF"}}>2026. All Rights Reserved</p></li> 
-                        {/* <li><p style={{color: "#333232"}}>Designed by Ey</p></li> */} 
+                        <li><p style={{color: "white", fontSize: "10px"}}>Designed by Ey</p></li> 
                     </ul>
                 </Quicklinks>
             </RightDiv>
@@ -77,7 +69,7 @@ const Wrapper = styled.div`
     margin-top: 60px;
     padding-top: 50px;
     width: 90%;
-    background-color: white;
+    background-color: #030013;
     border-radius: 20px;
     background-image: url(${globe});
     background-position: right;
@@ -153,7 +145,7 @@ const Paragraph = styled.div`
         font-weight: 450;
         font-size: 16px;
         line-height: 140%;
-        color: #333232;
+        color: white;
     }
 
     @media (max-width: 1024px) {
@@ -162,82 +154,10 @@ const Paragraph = styled.div`
         font-weight: 350;
         font-size: 12px;
         line-height: 120%;
-        color: #333232;
+        color: white;
         }
     }
     
-`
-
-const ButtonDiv = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    a{
-        text-decoration: none;
-    }
-    p{
-        font-family: 'Geist', sans-serif;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 140%;
-        color: #333232;
-    }
-    button{
-        width: 220px;
-        height: 50px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        background-color: transparent;
-        border-radius: 10px;
-        padding: 10px;
-        gap: 12px;
-        border: 2px solid #2400FF;
-
-        p{
-            font-family: 'Geist', sans-serif;
-            font-weight: 600;
-            font-size: 18px;
-            line-height: 100%;
-            color: #333232;
-        }
-    }
-
-    @media (max-width: 1024px) {
-        p{
-        font-family: 'Geist', sans-serif;
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 100%;
-        color: #333232;
-        }
-        button{
-            width: 150px;
-            height: 40px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            background-color: transparent;
-            border-radius: 10px;
-            padding: 10px;
-            gap: 8px;
-
-            p{
-                font-family: 'Geist', sans-serif;
-                font-weight: 600;
-                font-size: 12px;
-                line-height: 100%;
-                color: #333232;
-            }
-        }
-    }
-
-    @media (max-width: 768px) {
-        display: none;
-    }
 `
 
 const Quicklinks = styled.div` 
@@ -254,7 +174,7 @@ const Quicklinks = styled.div`
             font-weight: 600; 
             font-size: 18px; 
             line-height: 100%; 
-            color: #333232;
+            color: white;
             white-space: nowrap;
         } 
         li{ 
@@ -274,7 +194,7 @@ const Quicklinks = styled.div`
                 font-weight: 600;
                 font-size: 14px;
                 line-height: 100%;
-                color: #333232;
+                color: white;
                 white-space: nowrap;
             }
             li{
@@ -305,7 +225,7 @@ const Quicklinks = styled.div`
                 font-weight: 600;
                 font-size: 12px;
                 line-height: 100%;
-                color: #333232;
+                color: white;
                 white-space: nowrap;
             }
             li{
@@ -337,7 +257,7 @@ const Quicklinks = styled.div`
                 font-weight: 600;
                 font-size: 10px;
                 line-height: 50%;
-                color: #333232;
+                color: white;
                 white-space: nowrap;
             }
             li{
@@ -367,8 +287,28 @@ const NextDiv = styled.div`
             font-weight: 600;
             font-size: 12px;
             line-height: 100%;
-            color: #333232;
+            color: white;
         }
+    }
+
+`
+
+const All1 = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+     p{
+        font-family: 'Geist', sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 100%;
+        color: #2400FF;
+    }
+
+    @media (max-width: 768px) {
+        display: none;
     }
 
 `

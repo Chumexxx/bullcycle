@@ -144,7 +144,7 @@ const ProblemParagraph = styled.div`
     width: 550px;
     height: 154px;
     p{
-        font-family: 'Geist', Regular;
+        font-family: 'Geist', sans-serif;
         font-weight: 400;
         font-size: 20px;
         line-height: 100%;
@@ -153,7 +153,7 @@ const ProblemParagraph = styled.div`
 
     h1{
         margin-top: 0%;
-        font-family: 'Bebas Neue', Regular;
+        font-family: 'Bebas Neue', sans-serif;
         font-weight: 400;
         font-size: 64px;
         line-height: 100%;
@@ -226,7 +226,7 @@ const ExplanationParagraph = styled.div`
     width: 805px;
     height: 205px;
     p{
-        font-family: 'Geist', Regular;
+        font-family: 'Geist', sans-serif;
         font-weight: 400;
         font-size: 22px;
         line-height: 150%;

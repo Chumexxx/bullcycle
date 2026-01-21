@@ -61,7 +61,7 @@ const PageContent = styled.div`
     align-items: center;
     
     h1{
-        font-family: 'Bebas Neue', regular;
+        font-family: 'Bebas Neue', sans-serif;
         font-weight: 400;
         font-size: 90px;
         line-height: 100%;
@@ -69,7 +69,7 @@ const PageContent = styled.div`
     }
 
     p{
-        font-family: 'Geist', regular;
+        font-family: 'Geist', sans-serif;
         font-weight: 400;
         font-size: 20px;
         line-height: 100%; 

@@ -116,7 +116,7 @@ const PageContent = styled.div`
 
 const Paragraph1 = styled.div`
     p{
-        font-family: 'Geist', Regular;
+        font-family: 'Geist', sans-serif;
         font-weight: 400;
         font-size: 20px;
         line-height: 100%;
@@ -124,7 +124,7 @@ const Paragraph1 = styled.div`
     }
 
     h1{
-        font-family: 'Bebas Neue', Regular;
+        font-family: 'Bebas Neue', sans-serif;
         font-weight: 400;
         font-size: 64px;
         line-height: 100%;
@@ -194,7 +194,7 @@ const Paragraph1 = styled.div`
 
 const Paragraph2 = styled.div`
     p{
-        font-family: 'Geist', Regular;
+        font-family: 'Geist', sans-serif;
         font-weight: 400;
         font-size: 22px;
         line-height: 100%;
@@ -290,14 +290,14 @@ const Paragraph3 = styled.div`
 
 const Mission = styled.div`
     h1{
-        font-family: 'Bebas Neue', Regular;
+        font-family: 'Bebas Neue', sans-serif;
         font-weight: 400;
         font-size: 32px;
         line-height: 100%;
         color: white;
     }
     p{
-        font-family: 'Geist', Regular;
+        font-family: 'Geist', sans-serif;
         font-weight: 400;
         font-size: 22px;
         line-height: 100%;
@@ -378,14 +378,14 @@ const Mission = styled.div`
 
 const Vision = styled.div`
     h1{
-        font-family: 'Bebas Neue', Regular;
+        font-family: 'Bebas Neue', sans-serif;
         font-weight: 400;
         font-size: 32px;
         line-height: 100%;
         color: white;
     }
     p{
-        font-family: 'Geist', Regular;
+        font-family: 'Geist', sans-serif;
         font-weight: 400;
         font-size: 22px;
         line-height: 100%;

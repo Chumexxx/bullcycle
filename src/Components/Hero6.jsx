@@ -303,7 +303,7 @@ const PageContents = styled.div`
 const Paragraph = styled.div`
     text-align: center;
     h1{
-        font-family: 'Bebas Neue', regular;
+        font-family: 'Bebas Neue', sans-serif;
         font-weight: 400;
         font-size: 64px;
         line-height: 110%;
@@ -312,7 +312,7 @@ const Paragraph = styled.div`
     }
 
     p{
-        font-family: 'Geist', regular;
+        font-family: 'Geist', sans-serif;
         font-weight: 400;
         font-size: 22px;
         line-height: 150%;
@@ -596,7 +596,7 @@ const Card = styled.div`
 `
 
 const Text = styled.p`
-    font-family: 'Geist', regular;
+    font-family: 'Geist', sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 150%;
@@ -718,7 +718,7 @@ const Icon = styled.div`
 `
 
 const Title = styled.h1`
-    font-family: 'Bebas Neue', Regular;
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 400;
     font-size: 36px;
     line-height: 100%;
@@ -758,7 +758,7 @@ const ButtonDiv = styled.div`
     gap: 20px;
 
     p{
-        font-family: 'Geist', regular;
+        font-family: 'Geist', sans-serif;
         font-weight: 400;
         font-size: 20px;
         line-height: 100%;
@@ -827,7 +827,7 @@ const Button = styled.div`
 
     p{
         color: black;
-        font-family: 'Geist', Regular;
+        font-family: 'Geist', sans-serif;
         font-weight: 600;
         font-size: 16px;
         line-height: 100%;

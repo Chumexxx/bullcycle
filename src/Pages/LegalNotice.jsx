@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import TermsAndConditionsHeader from '../Components/TermsAndConditionsHeader'
+import LegalNoticeHeader from '../Components/LegalNoticeHeader'
+import LegalNoticeFooter from '../Components/LegalNoticeFooter'
 
-const TermsAndConditions = () => {
+const LegalNotice = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('terms')
   const [visibleSections, setVisibleSections] = useState(new Set(['terms']))
@@ -44,7 +45,7 @@ const TermsAndConditions = () => {
 
   return (
     <Wrapper>
-      <TermsAndConditionsHeader />
+      <LegalNoticeHeader />
 
       <PageContent>
         <Shortcuts>
@@ -277,11 +278,12 @@ const TermsAndConditions = () => {
           </MobileMenu>
         )}
       </PageContent>
+      <LegalNoticeFooter/>
     </Wrapper>
   )
 }
 
-export default TermsAndConditions
+export default LegalNotice
 
 const Wrapper = styled.div`
     width: 100%;
