@@ -200,6 +200,8 @@ const Page1Button1 = styled.div`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
 
     img{
         width: 12px;
@@ -275,6 +277,8 @@ const Page1Button2 = styled.div`
     justify-content: space-evenly;
     align-items: center;
     border: 1px solid white;
+    cursor: pointer;
+    transition: all 0.2s;
 
     img{
         width: 12px;

@@ -5,6 +5,7 @@ import Hero3 from '../Components/Hero3'
 import Hero4 from '../Components/Hero4'
 import Hero5 from '../Components/Hero5'
 import Hero6 from '../Components/Hero6'
+import Hero7 from '../Components/Hero7'
 
 const LandingPage = () => {
   return (
@@ -15,6 +16,7 @@ const LandingPage = () => {
       <Hero4/>
       <Hero5/>
       <Hero6/>
+      <Hero7/>
     </div>
   )
 }
