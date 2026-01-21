@@ -278,7 +278,9 @@ const LegalNotice = () => {
           </MobileMenu>
         )}
       </PageContent>
-      <LegalNoticeFooter/>
+      <FooterWrapper>
+            <LegalNoticeFooter/>
+        </FooterWrapper>
     </Wrapper>
   )
 }
@@ -692,5 +694,16 @@ const MobileLink = styled.a`
 
     @media (max-width: 320px) {
         font-size: 13px;
+    }
+`
+
+const FooterWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (max-width: 425px) {
+        display: none;
     }
 `
