@@ -291,10 +291,11 @@ const Paragraph1 = styled.div`
     @media (max-width: 480px) {
         width: 100%;
         h1 {
-            font-size: 40px;
+            font-size: 22px;
         }
         p {
-            font-size: 14px;
+            font-size: 12px;
+            line-height: 140%;
         }
     }
 
@@ -341,7 +342,9 @@ const Section2 = styled.div`
     }
 
     @media (max-width: 480px) {
-        margin-top: 80px;
+        flex-direction: column;
+        margin-top: 60px;
+        text-align: center;
     }
 
     @media (max-width: 425px) {
@@ -404,10 +407,15 @@ const Paragraph2 = styled.div`
 
     @media (max-width: 480px) {
         p {
-            font-size: 14px;
+            font-size: 12px;
+            text-align: center;
         }
         h1 {
-            font-size: 40px;
+            font-size: 22px;
+            text-align: center;
+            br {
+                display: none;
+            }
         }
     }
 
@@ -468,9 +476,8 @@ const Images1 = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 12px;
         img {
-            width: 100px;
+            display: none;
         }
     }
 
@@ -522,6 +529,14 @@ const Images2 = styled.div`
         }
     } */
 
+    
+    @media (max-width: 480px) {
+        display: flex;
+         img {
+            width: 100px;
+        }
+    }
+
     @media (max-width: 425px) {
         display: flex;
          img {
@@ -549,7 +564,11 @@ const Section3 = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 20px;
+        gap: 0px;
+        margin-top: 0%;
+        ${Images2} {
+            display: flex;
+        }
     }
 
     @media (max-width: 425px) {
@@ -597,8 +616,11 @@ const Paragraph3 = styled.div`
     }
 
     @media (max-width: 480px) {
+        margin-top: 0%;
         p {
-            font-size: 14px;
+            font-size: 12px;
+            text-align: center;
+            line-height: 140%;
         }
     }
 
@@ -708,15 +730,15 @@ const Section4 = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 22px;
+        gap: 20px;
         button {
-            width: 180px;
-            height: 42px;
+            width: 170px;
+            height: 40px;
             p {
-                font-size: 14px;
+                font-size: 13px;
             }
             img {
-                width: 16px;
+                width: 15px;
             }
         }
     }
@@ -800,10 +822,10 @@ const Paragraph4 = styled.div`
 
     @media (max-width: 480px) {
         h1 {
-            font-size: 40px;
+            font-size: 22px;
         }
         p {
-            font-size: 14px;
+            font-size: 12px;
         }
     }
 

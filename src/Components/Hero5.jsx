@@ -73,7 +73,7 @@ const Hero5 = () => {
         let isUserInteracting = false
 
         const startAutoScroll = () => {
-            if (window.innerWidth <= 425 && scrollRef.current && !isUserInteracting) {
+            if (window.innerWidth <= 480 && scrollRef.current && !isUserInteracting) {
                 autoScrollInterval.current = setInterval(() => {
                     if (scrollRef.current && !isUserInteracting) {
                         const scrollContainer = scrollRef.current
@@ -195,7 +195,7 @@ const Wrapper = styled.div`
     background-color: #030013;
     overflow: hidden;
 
-    @media (max-width: 425px) {
+    @media (max-width: 480px) {
         height: auto;
         padding: 40px 0;
     }
@@ -222,7 +222,8 @@ const PageContent = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 30px;
+        flex-direction: column;
+        gap: 40px;
     }
 
     @media (max-width: 425px) {
@@ -254,7 +255,9 @@ const Paragraphs = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 12px;
+        width: 100%;
+        text-align: center;
+        gap: 15px;
     }
 
     @media (max-width: 425px) {
@@ -298,7 +301,10 @@ const Paragraph1 = styled.div`
 
     @media (max-width: 480px) {
         h1 {
-            font-size: 36px;
+            font-size: 24px;
+            br {
+                display: none;
+            }
         }
     }
 
@@ -349,7 +355,9 @@ const Paragraph2 = styled.div`
 
     @media (max-width: 480px) {
         p {
-            font-size: 13px;
+            font-size: 12px;
+            line-height: 140%;
+            text-align: center;
         }
     }
 
@@ -387,7 +395,8 @@ const CoinsSection = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 12px;
+        width: 100%;
+        gap: 15px;
     }
 
     @media (max-width: 425px) {
@@ -441,11 +450,7 @@ const Navigations = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 14px;
-        img {
-            width: 32px;
-            height: 32px;
-        }
+        display: none;
     }
 
     @media (max-width: 425px) {
@@ -480,7 +485,8 @@ const Coins = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 12px;
+        gap: 15px;
+        padding: 10px 0;
     }
 
     @media (max-width: 425px) {
@@ -521,8 +527,8 @@ const Coin = styled.div`
     }
 
     @media (max-width: 480px) {
-        min-width: 150px;
-        height: 160px;
+        min-width: 80px;
+        height: 100px;
     }
 
     @media (max-width: 425px) {
@@ -566,8 +572,8 @@ const Image = styled.div`
 
     @media (max-width: 480px) {
         img {
-            width: 148px;
-            height: 105px;
+            width: 100px;
+            height: 70px;
         }
     }
 

@@ -73,8 +73,8 @@ const Wrapper = styled.div`
 
     @media (max-width: 480px) {
         height: auto;
-        background-size: 200%;
-        background-position: center calc(100% + 220px);
+        background-size: 220%;
+        background-position: center calc(100% + 250px);   
     }
 
     @media (max-width: 425px) {
@@ -113,6 +113,7 @@ const PageContent = styled.div`
 
     @media (max-width: 480px) {
         gap: 20px;
+        margin-bottom: 180px;
     }
 
     @media (max-width: 425px) {
@@ -157,6 +158,19 @@ const Texts = styled.div`
         }
     }
 
+    @media (max-width: 480px) {
+        width: 350px;
+        h1 {
+            font-size: 30px;
+            text-align: center;
+        }
+        p {
+            font-size: 12px;
+            text-align: center;
+            line-height: 140%;
+        }
+    }
+
 
     @media (max-width: 425px) {
         width: 350px;
@@ -186,7 +200,7 @@ const Texts = styled.div`
 `
 
 const PageButtons = styled.div`
-    width: 550px;
+    width: 650px;
     display: flex;
     justify-content: space-between;
 
@@ -207,7 +221,7 @@ const PageButtons = styled.div`
     }
 
     @media (max-width: 320px) {
-        width: 250px;
+        width: 320px;
     }
 `
 
@@ -268,9 +282,9 @@ const Page1Button1 = styled.div`
 
     @media (max-width: 480px) {
         width: 130px;
-        height: 32px;
+        height: 20px;
         p {
-            font-size: 12px;
+            font-size: 10px;
         }
     }
 
@@ -349,9 +363,9 @@ const Page1Button2 = styled.div`
 
     @media (max-width: 480px) {
         width: 130px;
-        height: 32px;
+        height: 20px;
         p {
-            font-size: 12px;
+            font-size: 9px;
         }
     }
 

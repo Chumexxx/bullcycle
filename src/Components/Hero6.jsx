@@ -193,7 +193,7 @@ const Hero6 = () => {
         let isUserInteracting = false
 
         const startAutoScroll = () => {
-            if (window.innerWidth <= 425 && scrollRef.current && !isUserInteracting) {
+            if (window.innerWidth <= 480 && scrollRef.current && !isUserInteracting) {
                 autoScrollInterval.current = setInterval(() => {
                     if (scrollRef.current && !isUserInteracting) {
                         const scrollContainer = scrollRef.current
@@ -244,7 +244,7 @@ const Hero6 = () => {
 
         const scrollContainer = scrollRef.current
 
-        if (scrollContainer && window.innerWidth <= 425) {
+        if (scrollContainer && window.innerWidth <= 480) {
             scrollContainer.addEventListener('touchstart', handleTouchStart, { passive: true })
             scrollContainer.addEventListener('touchend', handleTouchEnd, { passive: true })
         }
@@ -330,7 +330,7 @@ const Wrapper = styled.div`
     background-position: center;
     background-repeat: no-repeat;
 
-    @media (max-width: 425px) {
+    @media (max-width: 480px) {
         height: auto;
         padding: 40px 0;
     }
@@ -362,7 +362,7 @@ const PageContents = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 40px;
+        gap: 35px;
     }
 
     @media (max-width: 425px) {
@@ -422,11 +422,16 @@ const Paragraph = styled.div`
     }
 
     @media (max-width: 480px) {
-        h1 {
-            font-size: 40px;
+         h1 {
+            font-size: 22px;
         }
         p {
-            font-size: 14px;
+            font-size: 12px;
+            line-height: 100%;
+
+            br{
+                display: none;
+            }
         }
     }
 
@@ -492,7 +497,7 @@ const CardsSection = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 12px;
+        gap: 10px;
     }
 
     @media (max-width: 425px) {
@@ -545,11 +550,7 @@ const Navigations = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 14px;
-        img {
-            width: 32px;
-            height: 32px;
-        }
+        display: none;
     }
 
     @media (max-width: 425px) {
@@ -588,8 +589,8 @@ const AICards = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 12px;
-        margin-bottom: 30px;
+        gap: 10px;
+        margin-bottom: 25px;
     }
 
     @media (max-width: 425px) {
@@ -639,9 +640,9 @@ const Card = styled.div`
     }
 
     @media (max-width: 480px) {
-        width: 280px;
+        width: 260px;
         height: 360px;
-        padding: 20px;
+        padding: 28px;
     }
 
     @media (max-width: 425px) {

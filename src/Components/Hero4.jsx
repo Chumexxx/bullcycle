@@ -95,7 +95,7 @@ const Wrapper = styled.div`
     background-position: center;
     background-repeat: no-repeat;
 
-    @media (max-width: 425px) {
+    @media (max-width: 480px) {
         height: auto;
         padding: 40px 0;
     }
@@ -125,7 +125,7 @@ const PageContent = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 50px;
+        gap: 40px;
         padding: 0 20px;
     }
 
@@ -161,7 +161,9 @@ const Paragraph = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 15px;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
     }
 
     @media (max-width: 425px) {
@@ -225,12 +227,13 @@ const Paragraph1 = styled.div`
     }
 
     @media (max-width: 480px) {
-        width: 280px;
+        width: 100%;
+        text-align: center;
         p {
-            font-size: 13px;
+            font-size: 14px;
         }
         h1 {
-            font-size: 36px;
+            font-size: 24px;
         }
     }
 
@@ -286,9 +289,12 @@ const Paragraph2 = styled.div`
     }
 
     @media (max-width: 480px) {
-        width: 380px;
+        width: 100%;
+        text-align: center;
         p {
-            font-size: 14px;
+            font-size: 13px;
+            line-height: 140%;
+            text-align: center;
         }
     }
 
@@ -329,7 +335,12 @@ const Cards = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 10px;
+        flex-direction: column;
+        background-color: #030013;
+        border-radius: 16px;
+        padding: 20px;
+        gap: 15px;
+        width: 90%;
     }
 
     @media (max-width: 425px) {
@@ -375,7 +386,15 @@ const Card = styled.div`
     }
 
     @media (max-width: 480px) {
-        padding: 15px;
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+
+        &:hover {
+            transform: none;
+            box-shadow: none;
+        }
     }
 
     @media (max-width: 425px) {
@@ -414,7 +433,8 @@ const CardHeader = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 6px;
+        gap: 8px;
+        flex-shrink: 0;
     }
 
     @media (max-width: 425px) {
@@ -452,7 +472,8 @@ const Icon = styled.div`
 
     @media (max-width: 480px) {
         img {
-            width: 11px;
+            width: 12px;
+            filter: brightness(0) saturate(100%) invert(21%) sepia(97%) saturate(7495%) hue-rotate(250deg) brightness(94%) contrast(147%);
         }
     }
 
@@ -491,7 +512,8 @@ const Title = styled.p`
     }
 
     @media (max-width: 480px) {
-        font-size: 11px;
+        font-size: 14px;
+        font-weight: 600;
     }
 
     @media (max-width: 425px) {
@@ -525,7 +547,7 @@ const CardText = styled.p`
     }
 
     @media (max-width: 480px) {
-        font-size: 11px;
+        color: white;
     }
 
     @media (max-width: 425px) {

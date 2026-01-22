@@ -72,7 +72,7 @@ const Wrapper = styled.div`
         align-items: center;
     }
 
-    @media (max-width: 425px) {
+    @media (max-width: 480px) {
         height: auto;
     }
 `
@@ -102,7 +102,9 @@ const PageContent = styled.div`
     }
 
     @media (max-width: 480px) {
-        padding: 40px;
+        padding: 20px;
+        align-items: center;
+        gap: 40px;
     }
 
     @media (max-width: 425px) {
@@ -162,11 +164,16 @@ const Paragraph1 = styled.div`
     }
 
     @media (max-width: 480px) {
+        text-align: center;
         p {
-            font-size: 13px;
+            font-size: 12px;
         }
         h1 {
-            font-size: 36px;
+            font-size:24px;
+            margin-bottom: 0px;
+            br {
+                display: none;
+            }
         }
     }
 
@@ -222,8 +229,12 @@ const Paragraph2 = styled.div`
     }
 
     @media (max-width: 480px) {
+        text-align: center;
         p {
-            font-size: 14px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 200;
+            line-height: 140%;
         }
     }
 
@@ -270,8 +281,13 @@ const Paragraph3 = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 60px;
-        margin-top: 50px;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0px;
+        position: relative;
+        height: 200px;
+        flex-shrink: 0;
+        width: 100%;
     }
 
     @media (max-width: 425px) {
@@ -332,11 +348,28 @@ const Mission = styled.div`
         }
     }
     @media (max-width: 480px) {
+        position: absolute;
+        bottom: 20px;
+        left:3%;
+        background-color: rgba(255, 255, 255, 0.11);
+        border: 2px solid #2400FF;
+        border-radius: 12px;
+        padding: 8px;
+        width: 42%;
+        max-width: 180px;
+        transform: rotate(-10deg);
+        transform-origin: bottom right;
+        z-index: 1;
         h1 {
-            font-size: 22px;
+            color: #2400FF;
+            font-size: 18px;
+            margin-bottom: 5px;
         }
         p {
-            font-size: 14px;
+            color: white;
+            text-align: left;
+            line-height: 130%;
+            font-size: 10px;
         }
     }
     @media (max-width: 425px) {
@@ -420,13 +453,31 @@ const Vision = styled.div`
         }
     }
     @media (max-width: 480px) {
+        position: absolute;
+        bottom: 20px;
+        right: 3%;
+        background-color: rgba(255, 255, 255, 0.11);
+        border: 2px solid #2400FF;
+        border-radius: 12px;
+        padding: 8px;
+        width: 42%;
+        max-width: 180px;
+        transform: rotate(10deg);
+        transform-origin: bottom left;
+        z-index: 2;
         h1 {
-            font-size: 22px;
+            color: #2400FF;
+            font-size: 18px;
+            margin-bottom: 5px;
         }
         p {
-            font-size: 14px;
+            color: white;
+            text-align: left;
+            line-height: 130%;
+            font-size: 10px;
         }
     }
+
     @media (max-width: 425px) {
         position: absolute;
         bottom: 20px;

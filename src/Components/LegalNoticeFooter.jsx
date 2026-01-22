@@ -53,7 +53,7 @@ const LegalNoticeFooter = () => {
             <RightDiv>
                 <Quicklinks> 
                     <ul> 
-                        <a onClick={() => handleNavigateToSection('hero2')}><p><li>About Us</li></p></a>
+                        <a onClick={() => handleNavigateToSection('hero3')}><p><li>About Us</li></p></a>
                         <a onClick={() => handleNavigateToSection('hero5')}><p><li>Ecosystem</li></p></a> 
                         <a href="#"><p><li>Whitepaper</li></p></a> 
                     </ul> 
@@ -259,6 +259,40 @@ const Quicklinks = styled.div`
             }
             #all{
                 display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            ul{
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                padding: 0;
+                margin: 0;
+                
+                a{
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+                p{
+                    font-family: 'Geist', sans-serif;
+                    font-weight: 600;
+                    font-size: 10px;
+                    line-height: 50%;
+                    color: white;
+                    white-space: nowrap;
+                }
+                li{
+                    list-style-type: none;
+                    margin: 0;
+                }
+                #all{
+                    display: none;
+                }
             }
         }
 

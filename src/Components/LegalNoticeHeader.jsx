@@ -56,7 +56,7 @@ const LegalNoticeHeader = () => {
                     <span></span>
                     <span></span>
                 </CloseButton>
-                <a onClick={() => scrollToSection('hero2')}>About Us</a>
+                <a onClick={() => scrollToSection('hero3')}>About Us</a>
                 <a onClick={() => scrollToSection('hero5')}>Ecosystem</a>
                 <a href="#whitepaper" onClick={() => setIsMenuOpen(false)}>Download Whitepaper</a>
             </Tags>

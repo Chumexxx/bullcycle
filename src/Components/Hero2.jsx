@@ -54,7 +54,7 @@ const Wrapper = styled.div`
         align-items: center;
     }
 
-    @media (max-width: 425px) {
+    @media (max-width: 480px) {
         height: auto;
     }
 `
@@ -102,10 +102,12 @@ const PageContent = styled.div`
     }
 
     @media (max-width: 480px) {
-        margin-top: 60px;
-        gap: 30px;
+        margin-top: 0px;
+        width: 90%;
+        gap: 0px;
         img {
-            width: 400px;
+            width: 100%;
+            max-width: 350px;
         }
     }
 
@@ -136,7 +138,7 @@ const Paragraphs = styled.div`
     align-items: center;
     gap: 30px;
 
-    @media (max-width: 425px) {
+    @media (max-width: 480px) {
         flex-direction: column;
         gap: 20px;
     }
@@ -194,12 +196,13 @@ const ProblemParagraph = styled.div`
     }
 
     @media (max-width: 480px) {
-        width: 280px;
+        width: 100%;
+        text-align: center;
         p {
-            font-size: 13px;
+            font-size: 14px;
         }
         h1 {
-            font-size: 36px;
+            font-size: 24px;
         }
     }
 
@@ -257,9 +260,12 @@ const ExplanationParagraph = styled.div`
     }
 
     @media (max-width: 480px) {
-        width: 380px;
+        width: 100%;
+        text-align: center;
         p {
-            font-size: 14px;
+            font-size: 12px;
+            line-height: 140%;
+            text-align: left
         }
     }
 
