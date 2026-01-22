@@ -19,6 +19,10 @@ const Hero5 = () => {
 
     const coins = [
         {
+          coin: <img src={peacecoin} alt="coin" />,
+          title: 'PEACECOIN',
+        },
+        {
           coin: <img src={lovecoin} alt="coin" />,
           title: 'LOVECOIN',
         },
@@ -49,10 +53,6 @@ const Hero5 = () => {
         {
           coin: <img src={gentlenesscoin} alt="coin" />,
           title: 'GENTLENESSCOIN',
-        },
-        {
-          coin: <img src={peacecoin} alt="coin" />,
-          title: 'PEACECOIN',
         },
     ] 
 
