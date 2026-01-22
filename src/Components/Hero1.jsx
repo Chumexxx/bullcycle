@@ -98,7 +98,6 @@ const PageContent = styled.div`
     align-items: center;
     gap: 30px;
     margin-bottom: 500px;
-    border: 2px solid green;
 
     @media (max-width: 1440px) {
         gap: 35px;
@@ -125,7 +124,6 @@ const PageContent = styled.div`
     }
 `
 const Texts = styled.div`
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     justify-content: center;
