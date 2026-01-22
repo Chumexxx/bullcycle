@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import lovecoin from '../assets/lovecoin.svg'
 import joycoin from '../assets/joycoin.svg'
@@ -14,6 +14,8 @@ import rightarrow from '../assets/rightarrow.svg'
 
 const Hero5 = () => {
     const scrollRef = useRef(null)
+    const autoScrollInterval = useRef(null)
+    const scrollDirection = useRef(1)
 
     const coins = [
         {
@@ -65,6 +67,81 @@ const Hero5 = () => {
             scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' })
         }
     }
+
+    // Auto-scroll functionality for mobile with bidirectional scrolling
+    useEffect(() => {
+        const startAutoScroll = () => {
+            if (window.innerWidth <= 425 && scrollRef.current) {
+                autoScrollInterval.current = setInterval(() => {
+                    if (scrollRef.current) {
+                        const scrollContainer = scrollRef.current
+                        const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth
+                        const currentScroll = scrollContainer.scrollLeft
+                        
+                        // Check if we've reached the end (right side)
+                        if (currentScroll >= maxScroll - 5) {
+                            scrollDirection.current = -1 // Change direction to left
+                        }
+                        // Check if we've reached the beginning (left side)
+                        else if (currentScroll <= 5) {
+                            scrollDirection.current = 1 // Change direction to right
+                        }
+                        
+                        // Scroll in the current direction
+                        scrollContainer.scrollBy({ 
+                            left: scrollDirection.current * 1, 
+                            behavior: 'auto' 
+                        })
+                    }
+                }, 0) // Scroll every 20ms for smooth continuous motion
+            }
+        }
+
+        const stopAutoScroll = () => {
+            if (autoScrollInterval.current) {
+                clearInterval(autoScrollInterval.current)
+                autoScrollInterval.current = null
+            }
+        }
+
+        // Start auto-scroll on mobile
+        startAutoScroll()
+
+        // Stop auto-scroll when user interacts
+        const handleTouchStart = () => {
+            stopAutoScroll()
+        }
+
+        const handleTouchEnd = () => {
+            setTimeout(startAutoScroll, 2000) // Resume after 2 seconds of no interaction
+        }
+
+        const handleScroll = () => {
+            // If user is manually scrolling, stop auto-scroll temporarily
+            if (autoScrollInterval.current) {
+                stopAutoScroll()
+                setTimeout(startAutoScroll, 2000) // Resume after 2 seconds
+            }
+        }
+
+        const scrollContainer = scrollRef.current
+
+        if (scrollContainer) {
+            scrollContainer.addEventListener('touchstart', handleTouchStart)
+            scrollContainer.addEventListener('touchend', handleTouchEnd)
+            scrollContainer.addEventListener('scroll', handleScroll, { passive: true })
+        }
+
+        // Cleanup
+        return () => {
+            stopAutoScroll()
+            if (scrollContainer) {
+                scrollContainer.removeEventListener('touchstart', handleTouchStart)
+                scrollContainer.removeEventListener('touchend', handleTouchEnd)
+                scrollContainer.removeEventListener('scroll', handleScroll)
+            }
+        }
+    }, [])
 
   return (
     <Wrapper id="hero5">
@@ -376,19 +453,7 @@ const Navigations = styled.div`
     }
 
     @media (max-width: 425px) {
-        gap: 35px;
-        img {
-            width: 25px;
-            height: 25px;
-        }
-    }
-
-    @media (max-width: 320px) {
-        gap: 35px;
-        img {
-            width: 25px;
-            height: 25px;
-        }
+        display: none;
     }
 `
 
