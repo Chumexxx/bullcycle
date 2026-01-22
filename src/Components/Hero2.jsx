@@ -25,7 +25,7 @@ const Hero2 = () => {
                 </ExplanationParagraph>
             </Paragraphs>
 
-            <img src={chain} alt="" />
+            <img src={chain} alt="chain" />
 
         </PageContent>
       

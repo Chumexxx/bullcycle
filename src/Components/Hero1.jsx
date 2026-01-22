@@ -5,12 +5,17 @@ import download from '../assets/download.svg'
 import herobg from '../assets/herobg.svg'
 
 const Hero1 = () => {
+    const scrollToSection = (sectionId) => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+    }
   return (
     <Wrapper>
       <Header />
 
       <PageContent>
-        <PageContentItems>
             <Texts>
                 <h1>
                     A NEW CYCLE BEGINS FOR HUMANITY
@@ -20,7 +25,7 @@ const Hero1 = () => {
                 </p>
             </Texts>
             <PageButtons>
-                <Page1Button1>
+                <Page1Button1 onClick={() => scrollToSection('hero5')}>
                     <img src={power} alt="Power Icon" />
                     <p>Explore Ecosystem</p>
                 </Page1Button1>
@@ -30,11 +35,6 @@ const Hero1 = () => {
                     <p>Download Whitepaper</p>
                 </Page1Button2>
             </PageButtons>
-
-            <HeroImage>
-                <img src={herobg} alt="" />
-            </HeroImage>
-        </PageContentItems>
       </PageContent>
       
     </Wrapper>
@@ -51,17 +51,86 @@ const Wrapper = styled.div`
     align-items: center;
     background-color: #030013;
     overflow: hidden;
+    background-image: url(${herobg});
+    background-size: 70%;
+    background-position: center calc(100% + 350px);
+    background-repeat: no-repeat;
+
+    @media (max-width: 1440px) {
+        background-size: 80%;
+        background-position: center calc(100% + 250px);
+    }
+
+    @media (max-width: 1024px) {
+        background-size: 90%;
+        background-position: center calc(100% + 200px);
+    }
+
+    @media (max-width: 768px) {
+        background-size: 150%;
+        background-position: center calc(100% + 250px);
+    }
+
+    @media (max-width: 480px) {
+        height: auto;
+        background-size: 200%;
+        background-position: center calc(100% + 220px);
+    }
 
     @media (max-width: 425px) {
         height: auto;
+        background-size: 220%;
+        background-position: center calc(100% + 250px);         // center content vertically
+    }
+
+    @media (max-width: 320px) {
+        background-size: 200%;
+        background-position: center calc(100% + 150px);
     }
 `
 
 const PageContent = styled.div`
+    width: 90%;
     flex: 1;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    
+    gap: 30px;
+    margin-bottom: 500px;
+    border: 2px solid green;
+
+    @media (max-width: 1440px) {
+        gap: 35px;
+    }
+
+    @media (max-width: 1024px) {
+        gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+        gap: 25px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 20px;
+    }
+
+    @media (max-width: 425px) {
+        margin-bottom: 180px;
+    }
+
+    @media (max-width: 320px) {
+        margin-bottom: 180px;
+    }
+`
+const Texts = styled.div`
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     h1{
         font-family: 'Bebas Neue', sans-serif;
         font-weight: 400;
@@ -79,68 +148,17 @@ const PageContent = styled.div`
         color: white;
     }
 
-    @media (max-width: 1440px) {
-        h1 {
-            font-size: 75px;
-        }
-        p {
-            font-size: 18px;
-        }
-    }
-
     @media (max-width: 1024px) {
         h1 {
             font-size: 60px;
+            text-align: center;
         }
         p {
-            font-size: 16px;
+            text-align: center;
+            line-height: 140%;
         }
     }
 
-    @media (max-width: 768px) {
-        h1 {
-            font-size: 50px;
-        }
-        p {
-            font-size: 14px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        h1 {
-            font-size: 40px;
-        }
-        p {
-            font-size: 12px;
-        }
-    }
-`
-
-const PageContentItems = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-
-    @media (max-width: 1440px) {
-        gap: 35px;
-    }
-
-    @media (max-width: 1024px) {
-        gap: 30px;
-    }
-
-    @media (max-width: 768px) {
-        gap: 25px;
-    }
-
-    @media (max-width: 480px) {
-        gap: 20px;
-    }
-`
-
-const Texts = styled.div`
 
     @media (max-width: 425px) {
         width: 350px;
@@ -149,6 +167,7 @@ const Texts = styled.div`
             text-align: center;
         }
         p {
+            font-size: 12px;
             text-align: center;
             line-height: 140%;
         }
@@ -163,6 +182,7 @@ const Texts = styled.div`
         p {
             font-size: 12px;
             text-align: center;
+            line-height: 100%;
         }
     }
 `
@@ -204,6 +224,10 @@ const Page1Button1 = styled.div`
     align-items: center;
     cursor: pointer;
     transition: all 0.2s;
+
+     &:hover {
+        transform: scale(1.05);
+    }
 
     img{
         width: 12px;
@@ -282,6 +306,10 @@ const Page1Button2 = styled.div`
     cursor: pointer;
     transition: all 0.2s;
 
+     &:hover {
+        transform: scale(1.05);
+    }
+
     img{
         width: 12px;
     }
@@ -345,46 +373,3 @@ const Page1Button2 = styled.div`
         }
     }
 `
-
-const HeroImage = styled.div`
-    img{
-        height: 500px;
-        max-height:60vh;
-        object-fit: contain;
-    }
-
-    @media (max-width: 1440px) {
-        img {
-            height: 550px;
-        }
-    }
-
-    @media (max-width: 1024px) {
-        img {
-            height: 550px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        img {
-            height: 550px;
-            max-height:100vh;
-        }
-    }
-
-    @media (max-width: 480px) {
-        img {
-            height: 260px;
-        }
-    }
-
-    @media (max-width: 425px) {
-        img {
-            width: 90vw;
-            max-width: 400px;
-            height: auto;
-            max-height: 45vh;
-        }
-    }
-`
-

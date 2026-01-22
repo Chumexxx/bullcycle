@@ -9,22 +9,22 @@ import virtue from '../assets/virtue.svg'
 const Hero4 = () => {
     const cards = [
     {
-      icon: <img src={crypto} alt="" />,
+      icon: <img src={crypto} alt="coin" />,
       title: 'Unity through Crypto',
       text: 'A borderless network that connects people beyond race, religion, or nationality. One people, one humanity'
     },
     {
-      icon: <img src={document} alt="" />,
+      icon: <img src={document} alt="coin" />,
       title: 'Blockchain Transparency',
       text: 'Smart contracts and public ledgers that make justice programmable and corruption obsolete'
     },
     {
-      icon: <img src={intelligent} alt="" />,
+      icon: <img src={intelligent} alt="coin" />,
       title: 'Intelligent Systems',
       text: 'AI models that ensure fair distribution, accountability, and productivity-based growth'
     },
     {
-      icon: <img src={virtue} alt="" />,
+      icon: <img src={virtue} alt="coin" />,
       title: 'Virtue-Based Stablecoins',
       text: 'Digital currencies tied to moral values like love & peace, not just on speculation'
     }

@@ -17,39 +17,39 @@ const Hero5 = () => {
 
     const coins = [
         {
-          coin: <img src={lovecoin} alt="" />,
+          coin: <img src={lovecoin} alt="coin" />,
           title: 'LOVECOIN',
         },
         {
-          coin: <img src={joycoin} alt="" />,
+          coin: <img src={joycoin} alt="coin" />,
           title: 'JOYCOIN',
         },
         {
-          coin: <img src={faithfulnesscoin} alt="" />,
+          coin: <img src={faithfulnesscoin} alt="coin" />,
           title: 'FAITHFULNESSCOIN',
         },
         {
-          coin: <img src={selfcontrolcoin} alt="" />,
+          coin: <img src={selfcontrolcoin} alt="coin" />,
           title: 'SELFCONTROLCOIN',
         },
         {
-          coin: <img src={goodnesscoin} alt="" />,
+          coin: <img src={goodnesscoin} alt="coin" />,
           title: 'GOODNESSCOIN',
         },
         {
-          coin: <img src={patiencecoin} alt="" />,
+          coin: <img src={patiencecoin} alt="coin" />,
           title: 'PATIENCECOIN',
         },
         {
-          coin: <img src={kindnesscoin} alt="" />,
+          coin: <img src={kindnesscoin} alt="coin" />,
           title: 'KINDNESSCOIN',
         },
         {
-          coin: <img src={gentlenesscoin} alt="" />,
+          coin: <img src={gentlenesscoin} alt="coin" />,
           title: 'GENTLENESSCOIN',
         },
         {
-          coin: <img src={peacecoin} alt="" />,
+          coin: <img src={peacecoin} alt="coin" />,
           title: 'PEACECOIN',
         },
     ] 

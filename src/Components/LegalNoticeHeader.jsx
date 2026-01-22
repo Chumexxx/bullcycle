@@ -170,14 +170,14 @@ const Hamburger = styled.div`
     span {
         width: 25px;
         height: 3px;
-        background-color: black;
+        background-color: white;
         margin: 3px 0;
         transition: all 0.3s ease;
         border-radius: 3px;
     }
 
     @media (max-width: 768px) {
-        display: flex;
+        display: ${props => props.$isOpen ? 'none' : 'flex'};
     }
 `
 

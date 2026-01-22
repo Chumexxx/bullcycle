@@ -34,7 +34,7 @@ const Footer = () => {
         <PageContent>
             <LeftDiv>
                 <Image>
-                    <img src={bullcycle} alt="" />
+                    <img src={bullcycle} alt="bullcycle image" />
                 </Image>
 
                 <Paragraph>
@@ -49,7 +49,7 @@ const Footer = () => {
                     </p>
                     <a href="mailto:bullcycle070@gmail.com">
                         <button>
-                            <img src={emailblack} alt="" />
+                            <img src={emailblack} alt="email icon" />
                             <p>Send us an email</p>
                         </button>
                     </a>
@@ -218,6 +218,11 @@ const ButtonDiv = styled.div`
         padding: 10px;
         gap: 12px;
         border: 2px solid #2400FF;
+        transition: all 0.2s;
+
+        &:hover {
+            transform: scale(1.05);
+            }
 
         p{
             font-family: 'Geist', sans-serif;

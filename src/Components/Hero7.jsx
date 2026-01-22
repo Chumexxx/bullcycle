@@ -12,7 +12,7 @@ const Hero7 = () => {
     <Wrapper>
         <PageContent>
             <Section1>
-                <img src={bull} alt="" />
+                <img src={bull} alt="bull image" />
 
                 <Paragraph1>
                     <h1>
@@ -40,9 +40,9 @@ const Hero7 = () => {
                 </Paragraph2>
 
                 <Images1>
-                    <img src={leader1} alt="" />
-                    <img src={leader2} alt="" />
-                    <img src={leader3} alt="" />
+                    <img src={leader1} alt="leader" />
+                    <img src={leader2} alt="leader" />
+                    <img src={leader3} alt="leader" />
                 </Images1>
 
             </Section2>
@@ -75,9 +75,9 @@ const Hero7 = () => {
                 </Paragraph3>
 
                 <Images2>
-                    <img src={leader1} alt="" />
-                    <img src={leader2} alt="" />
-                    <img src={leader3} alt="" />
+                    <img src={leader1} alt="leader" />
+                    <img src={leader2} alt="leader" />
+                    <img src={leader3} alt="leader" />
                 </Images2>
             </Section3>
 
@@ -93,7 +93,7 @@ const Hero7 = () => {
                 </Paragraph4>
                 <a href="mailto:bullcycle070@gmail.com">
                     <button>
-                        <img src={email} alt="" />
+                        <img src={email} alt="email" />
                         <p>Send us an email</p>
                     </button>
                 </a>
@@ -646,6 +646,7 @@ const Section4 = styled.div`
 
         &:hover {
             background-color: white;
+            transform: scale(1.05);
             
             p {
                 color: #030013;

@@ -39,137 +39,137 @@ const Hero6 = () => {
                 const cards = [
             {
               text: 'MedLedger AI is Bullcycle’s healthcare intelligence and blockchain infrastructure built for resilience, privacy, and patient dignity. It brings together smart health wallets, self-sovereign identity, AI triage, secure data exchange, Health DAOs, and on-chain micro-insurance to create a network of healing powered by code and compassion. In this system, medical care becomes instant, tamper-proof, and accessible without paperwork, bribes, or delay',
-              icon: <img src={medledger} alt="" />,
+              icon: <img src={medledger} alt="icon" />,
               title: 'MEDLEDGER AI'
             },
             {
               text: 'LearnLedger Protocol is a decentralized global learning network powered by AI and blockchain, built around a self-sovereign learning identity that follows the learner everywhere. It combines AI-tuned learning environments, peer-to-peer teaching DAOs, NFT-certified credentials, on-chain micro-scholarships, smart bursaries, and earn-to-learn models to liberate minds with new systems. In this network, knowledge becomes borderless, tamper-proof, and universally recognized',
-              icon: <img src={learnledger} alt="" />,
+              icon: <img src={learnledger} alt="icon" />,
               title: 'LEARNLEDGER AI'
             },
             {
               text: 'AgriCycle AI is a decentralized agricultural ecosystem powered by AI, blockchain, and crypto incentives, giving farmers tools like Farm diagnostics, Agri-ID, verified seed registries, and weather-linked insurance. It uses Farm DAOs, stablecoin payments and AgriCoin microloans to help farmers reclaim ownership, access finance, and connect globally. The result is sovereignty, climate justice, and a future-proof food system where farmers own their data, their produce, and their future',
-              icon: <img src={agricycle} alt="" />,
+              icon: <img src={agricycle} alt="icon" />,
               title: 'AGRICYCLE AI'
             },
             {
               text: 'SelfID is Bullcycle’s decentralized identity framework powered by AI and blockchain, built around a universal digital passport tied to biometric and behavioral traits. It provides encrypted identity vaults, selective proof-sharing, cross-border sync, reputation tokens, and guardian features while ensuring that whether in Lagos, London, or the metaverse, you still remain you. With a single biometric scan, SelfID restores recognition, dignity, and inclusion through a tamper-proof digital identity',
-              icon: <img src={selfid} alt="" />,
+              icon: <img src={selfid} alt="icon" />,
               title: 'SELFID'
             },
             {
               text: 'VoteTrust is Bullcycle’s AI and blockchain infrastructure for secure, transparent global voting. It uses biometric digital voter IDs, smart-contract counting, and open audit trails to eliminate ghost voters, ballot stuffing, and manipulation. Every vote is anonymous, verifiable, and instantly validated, creating digital democracy in action',
-              icon: <img src={votetrust} alt="" />,
+              icon: <img src={votetrust} alt="icon" />,
               title: 'VOTETRUST'
             },
             {
               text: 'Lawchain is Bullcycle’s AI and blockchain system for Smart Justice and LegalTech transformation. It offers AI legal chatbots, smart contract builders, evidence vaults, and decentralized dispute resolution to make justice programmable and universal. Legal conflicts are resolved on-chain with verified experts and automated rulings by leveraging smart contracts; no courts, no borders, no legal fees',
-              icon: <img src={lawchain} alt="" />,
+              icon: <img src={lawchain} alt="icon" />,
               title: 'LAWCHAIN AI'
             },
             {
               text: 'EstateChain DAO is Bullcycle’s decentralized, borderless property registry and management system. It uses AI valuation, blockchain land deeds, smart contract rentals, tokenized property shares, and housing history NFTs to make ownership clear, fair, and programmable. Every transfer becomes transparent and tamper-proof, turning property ownership from a maze of bureaucracy into a dignified right for anyone',
-              icon: <img src={estatechain} alt="" />,
+              icon: <img src={estatechain} alt="icon" />,
               title: 'ESTATECHAIN AI'
             },
             {
               text: 'PropChain is Bullcycle’s AI and blockchain platform for managing residential, commercial, and land properties. It uses AI repair forecasting, NFT property tokens, decentralized rent payments, smart sensors, and tenant DAOs to make ownership and occupancy intelligent and just. Every interaction from entry to escrow is secured, decentralized, equitable and fair',
-              icon: <img src={propchain} alt="" />,
+              icon: <img src={propchain} alt="icon" />,
               title: 'PROPCHAIN AI'
             },
             {
               text: 'LegacyChain AI is a decentralized protocol for creating and executing digital wills, using AI guidance, biometric verification, and blockchain-based smart contracts. It enables secure, rule-based inheritance of digital and physical assets across jurisdictions, with automated disbursements to heirs and charities. The system ensures that a person’s legacy is preserved, protected from corruption, and accessible immediately upon verified events like death',
-              icon: <img src={legacychain} alt="" />,
+              icon: <img src={legacychain} alt="icon" />,
               title: 'LEGACYCHAIN AI'
             },
             {
               text: 'CivicChain is Bullcycle’s governance, accountability, and inclusion platform for the public sector. It uses GovID wallets, on-chain elections, smart-contract civic funds, welfare verification, and citizen-run oversight DAOs to modernize trust. Every decision becomes visible, immutable, and instantly auditable, delivering governance that is truly transparent',
-              icon: <img src={civicchain} alt="" />,
+              icon: <img src={civicchain} alt="icon" />,
               title: 'CIVIC CHAIN AI'
             },
             {
               text: 'Defi Pay is Bullcycle’s hybrid confidential financial network, a global ethical financial highway for the unbanked, underserved, and unseen. It uses zero-knowledge stablecoin wallets, Self ID verification, AI fraud detection, micro-lending, and community smart contracts to balance transparency with human privacy. Every transaction becomes verifiable yet confidential, creating a financial system trusted by regulators and respected by humanity',
-              icon: <img src={defipay} alt="" />,
+              icon: <img src={defipay} alt="icon" />,
               title: 'DEFI PAY'
             },
             {
               text: 'MoveChain is Bullcycle’s decentralized transportation infrastructure, built to let people co-own and co-shape how their cities move. It integrates AI-enhanced routing, blockchain vehicle registries, carbon credit tokens, smart logistics, incentivized carpooling, and community voting. With intermodal wallets, smart insurance, carbon ledgers, and zero-knowledge security, it creates a fair, efficient, and accountable transit ecosystem',
-              icon: <img src={movechain} alt="" />,
+              icon: <img src={movechain} alt="icon" />,
               title: 'MOVECHAIN AI'
             },
             {
               text: 'Artstream Protocol is Bullcycle’s decentralized AI and blockchain platform for media ownership, licensing, and profit-sharing. It offers NFT minting, AI collaborations, smart streaming wallets, Proof-of-Voice protection, fan-powered DAOs, and censorship-resistant media archives to empower creators, not platforms. Here, your talent becomes your equity, and every creative work is protected, owned, and rewarded instantly',
-              icon: <img src={artstream} alt="" />,
+              icon: <img src={artstream} alt="icon" />,
               title: 'ARTSTREAM AI'
             },
             {
               text: 'InsureChain is Bullcycle’s AI and blockchain platform for decentralized insurance products. It offers parametric policies, AI-verified IoT and satellite claims, community insurance DAOs, smart contract coverage, and on-chain actuarial models that make protection provable and programmable. Claims trigger automatically and pay out instantly, creating transparent protection without disputes or paperwork',
-              icon: <img src={insurechain} alt="" />,
+              icon: <img src={insurechain} alt="icon" />,
               title: 'INSURECHAIN AI'
             },
             {
               text: 'BondLedger AI is a decentralized compassion network where AI, virtue and blockchain rebuild the emotional and moral fabric of society. It uses Family Trust Wallets, AI relationship mediators, community DAOs, crypto care vouchers, and LoveLedger rewards to turn compassion into infrastructure. Every act of support becomes transparent, secure, and verifiable, preserving belonging across families and communities',
-              icon: <img src={bondledger} alt="" />,
+              icon: <img src={bondledger} alt="icon" />,
               title: 'BONDLEDGER AI'
             },
             {
               text: 'KnowLedger AI is Bullcycle’s decentralized intelligence framework where truth, transparency, and trust converge. It uses open research chains, AI validation, smart funding pools, virtue-weighted collaboration, and tokenized knowledge to create a moral economy of enlightenment. In this system, discoveries are verified, credited, and rewarded transparently because truth earns value',
-              icon: <img src={knowledger} alt="" />,
+              icon: <img src={knowledger} alt="icon" />,
               title: 'KNOWLEDGER AI'
             },
             {
               text: 'WorkChain AI is Bullcycle’s decentralized employment and gig platform built to empower workers, automate trust, and restore dignity in global labor markets. It delivers smart-contract payments, AI skill matchmaking, immutable work profiles, gig DAO governance, and virtue-backed rewards for ethical work. Every job becomes fair, transparent, and borderless making talent visible wherever it exists',
-              icon: <img src={workchain} alt="" />,
+              icon: <img src={workchain} alt="icon" />,
               title: 'WORKCHAIN AI'
             },
             {
               text: 'AidTrust AI is Bullcycle’s decentralized humanitarian intelligence and disaster resilience system built to make compassion efficient, transparent, and borderless. It combines transparent donation chains, self-sovereign ID for victims, AI disaster prediction, drone and satellite mapping, and blockchain supply ledgers to prevent fraud and ensure verified delivery. In this system, charity becomes coordination, and donations become truth',
-              icon: <img src={aidtrust} alt="" />,
+              icon: <img src={aidtrust} alt="icon" />,
               title: 'AIDTRUST AI'
             },
             {
               text: 'NutriTrust AI is Bullcycle’s nutrition intelligence and ethical food verification platform built on AI personalization and blockchain transparency. It combines personal nutrition IDs, smart label verification, health value scoring, wellness tracking, and community nutrition DAOs to teach the world how to eat wisely and live consciously. Every meal becomes verified, rewarded, and aligned with integrity',
-              icon: <img src={nutritrust} alt="" />,
+              icon: <img src={nutritrust} alt="icon" />,
               title: 'NUTRITRUST AI'
             },
             {
               text: 'AquaPure AI is Bullcycle’s decentralized infrastructure for environmental intelligence, water purification, and sanitation accountability. It uses AI sensing, IoT smart water grids, and blockchain-verified reports to track purity, predict contamination, and ensure transparent aid distribution. Environmental care becomes shared stewardship, where accountability is automated and justice flows like water',
-              icon: <img src={aquapure} alt="" />,
+              icon: <img src={aquapure} alt="icon" />,
               title: 'AQUAPURE AI'
             },
             {
               text: 'MindHaven AI is Bullcycle’s decentralized ecosystem for emotional intelligence and global wellness powered by AI and blockchain. It combines self-sovereign wellness identities, AI empath companions, peer-to-peer support DAOs, and smart care contracts to make healing private, measurable, and empowering. Mental health becomes a digital right, not a privilege',
-              icon: <img src={mindhaven} alt="" />,
+              icon: <img src={mindhaven} alt="icon" />,
               title: 'MINDHAVEN AI'
             },
             {
               text: 'CultureLedger Protocol is Bullcycle’s decentralized tourism and heritage ecosystem connecting travelers, communities, and cultures through transparency and truth. It uses cultural DAOs, tokenized preservation, AI heritage guardians, and authenticity verification to ensure travel funds communities, not exploitation. Here, tourism becomes preservation, and culture thrives on the blockchain',
-              icon: <img src={cultureledger} alt="" />,
+              icon: <img src={cultureledger} alt="icon" />,
               title: 'CULTURELEDGER AI'
             },
             {
               text: 'AstroLedger Protocol is Bullcycle’s decentralized, AI-powered framework for interplanetary innovation, exploration, and governance. Through space DAOs, tokenized mission funding, AI navigation, and immutable mission records, space projects become transparent and globally co-owned. It ensures space becomes humanity’s shared destiny, guided by equity and governed by truth',
-              icon: <img src={astroledger} alt="" />,
+              icon: <img src={astroledger} alt="icon" />,
               title: 'ASTROLEDGER AI'
             },
             {
               text: 'ThreadLedger Protocol is Bullcycle’s AI and blockchain system for a transparent, fair, and regenerative fashion ecosystem. It gives every garment a digital passport, automates fair wages through smart contracts, enables circular DAO fashion houses, and rewards sustainability with EcoTokens. Fashion becomes traceable, ethical, and authentic—where what you wear carries truth, not exploitation',
-              icon: <img src={threadledger} alt="" />,
+              icon: <img src={threadledger} alt="icon" />,
               title: 'THREADLEDGER AI'
             },
             {
               text: 'SportChain Protocol is Bullcycle’s decentralized sports ecosystem uniting athletes, fans, coaches, and creators through transparency and reward. It records athlete identities and performance on-chain, automates sponsorships with smart contracts, and enables fan-powered economies and earn-to-train systems. Talent meets opportunity in a world where sports are protected by truth and powered by purpose',
-              icon: <img src={sportschain} alt="" />,
+              icon: <img src={sportschain} alt="icon" />,
               title: 'SPORTSCHAIN AI'
             },
             {
               text: 'BioGuardian Protocol is Bullcycle’s AI and blockchain guardianship network for protecting the planet’s living systems. It tracks wildlife identities, deploys AI drones against poaching, rewards conservation actions, and enforces transparent ecological funding through smart contracts. Every creature matters, every action counts, and stewardship becomes automated and accountable',
-              icon: <img src={bioguardian} alt="" />,
+              icon: <img src={bioguardian} alt="icon" />,
               title: 'BIOGUARDIAN AI'
             },
             {
               text: 'NextGen Protocol merges AI mentorship, blockchain certification, and funding. for youth empowerment. It tracks verified achievements, guides learning and leadership through AI mentors, and connects youth globally via DAOs, virtual hubs, and smart incubators. Every contribution earns InspireTokens, blockchain-verified credentials, and access to opportunities, making young people stakeholders in humanity’s progress',
-              icon: <img src={nextgenprotocol} alt="" />,
+              icon: <img src={nextgenprotocol} alt="icon" />,
               title: 'NEXTGENPROTOCOL'
             },
         ] 
@@ -820,6 +820,10 @@ const Button = styled.div`
     border: 2px solid #2400FF;
     cursor: pointer;
     transition: all 0.2s;
+
+     &:hover {
+        transform: scale(1.05);
+    }
 
     img{
         width: 12px;

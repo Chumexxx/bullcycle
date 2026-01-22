@@ -161,6 +161,7 @@ const Logo = styled.div`
     }
 `
 
+
 const Hamburger = styled.div`
     display: none;
     flex-direction: column;
@@ -177,7 +178,7 @@ const Hamburger = styled.div`
     }
 
     @media (max-width: 768px) {
-        display: flex;
+        display: ${props => props.$isOpen ? 'none' : 'flex'};
     }
 `
 

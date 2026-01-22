@@ -33,7 +33,7 @@ const LegalNoticeFooter = () => {
         <PageContent>
             <LeftDiv>
                 <Image>
-                    <img src={bullcycle} alt="" />
+                    <img src={bullcycle} alt="bull logo" />
                 </Image>
 
                 <Paragraph>
@@ -263,38 +263,38 @@ const Quicklinks = styled.div`
         }
 
         @media (max-width: 425px) {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        ul{
             display: flex;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             justify-content: center;
-            padding: 0;
-            margin: 0;
-            
-            a{
-                text-decoration: none;
-                cursor: pointer;
-            }
-            p{
-                font-family: 'Geist', sans-serif;
-                font-weight: 600;
-                font-size: 10px;
-                line-height: 50%;
-                color: white;
-                white-space: nowrap;
-            }
-            li{
-                list-style-type: none;
+            align-items: center;
+            ul{
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                padding: 0;
                 margin: 0;
-            }
-            #all{
-                display: none;
+                
+                a{
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+                p{
+                    font-family: 'Geist', sans-serif;
+                    font-weight: 600;
+                    font-size: 10px;
+                    line-height: 50%;
+                    color: white;
+                    white-space: nowrap;
+                }
+                li{
+                    list-style-type: none;
+                    margin: 0;
+                }
+                #all{
+                    display: none;
+                }
             }
         }
-    }
     }
 `
 
