@@ -77,10 +77,11 @@ const Footer = () => {
             <NextDiv>
                 <p>
                     Want to leave feedback?
-                </p>
+
                 <a href="mailto:bullcycle070@gmail.com">
-                    <p> <span style={{color: "#2400FF"}}>Send us a message</span></p>
+                    <span style={{color: "#2400FF"}}> Send us a message</span>
                 </a>
+                </p>
             </NextDiv>
             <All>
                 <p>
