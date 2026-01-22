@@ -233,14 +233,14 @@ const Hero6 = () => {
         }
 
         const handleTouchEnd = () => {
-            setTimeout(startAutoScroll, 2000) // Resume after 2 seconds of no interaction
+            setTimeout(startAutoScroll, 20) // Resume after 2 seconds of no interaction
         }
 
         const handleScroll = () => {
             // If user is manually scrolling, stop auto-scroll temporarily
             if (autoScrollInterval.current) {
                 stopAutoScroll()
-                setTimeout(startAutoScroll, 2000) // Resume after 2 seconds
+                setTimeout(startAutoScroll, 20) // Resume after 2 seconds
             }
         }
 
