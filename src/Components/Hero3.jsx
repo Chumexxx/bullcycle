@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Hero3 = () => {
   return (
-    <Wrapper>
+    <Wrapper id="hero3">
         <PageContent>
             <Paragraph1>
                 <p>The Solution</p>
@@ -54,6 +54,8 @@ const Hero3 = () => {
     </Wrapper>
   )
 }
+
+export default Hero3
 
 const Wrapper = styled.div`
     width: 100%;
@@ -501,4 +503,3 @@ const Line = styled.div`
     }
 `
 
-export default Hero3

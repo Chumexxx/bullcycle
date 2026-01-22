@@ -121,6 +121,7 @@ const Wrapper = styled.div`
     overflow: hidden;
     padding-top: 100px;
     padding-bottom: 100px;
+        border: 1px solid green;
 
     @media (max-width: 1440px) {
         padding-top: 90px;
@@ -134,12 +135,11 @@ const Wrapper = styled.div`
 
     @media (max-width: 768px) {
         padding-top: 70px;
-        padding-bottom: 70px;
+        padding-bottom: 0px;
     }
 
     @media (max-width: 480px) {
         padding-top: 60px;
-        padding-bottom: 60px;
     }
 
     @media (max-width: 425px) {

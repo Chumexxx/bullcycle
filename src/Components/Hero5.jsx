@@ -67,7 +67,7 @@ const Hero5 = () => {
     }
 
   return (
-    <Wrapper>
+    <Wrapper id="hero5">
 
         <PageContent>
 

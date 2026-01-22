@@ -3,9 +3,31 @@ import styled from 'styled-components'
 import globe from '../assets/globe.svg'
 import bullcycle from '../assets/bullcycle.svg'
 import emailblack from '../assets/emailblack.svg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+    const navigate = useNavigate()
+
+    const handleNavigateToSection = (sectionId) => {
+        navigate('/')
+        setTimeout(() => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+        }, 100)
+    }
+
+    const handleLegalSection = (sectionId) => {
+        navigate('/legal-notice')
+        setTimeout(() => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+        }, 100)
+    }
+  
   return (
     <Wrapper>
 
@@ -38,14 +60,14 @@ const Footer = () => {
             <RightDiv>
                 <Quicklinks> 
                     <ul> 
-                        <a href="#"><p><li>About Us</li></p></a>
-                        <a href="#"><p><li>Ecosystem</li></p></a> 
+                        <a onClick={() => handleNavigateToSection('hero2')}><p><li>About Us</li></p></a>
+                        <a onClick={() => handleNavigateToSection('hero5')}><p><li>Ecosystem</li></p></a> 
                         <a href="#"><p><li>Whitepaper</li></p></a> 
                     </ul> 
                     <ul>
                         <Link to="/legal-notice"> <p><li>Legal Notices</li></p> </Link> 
-                        <a href="#"><p><li>Privacy Poilcy</li></p></a> 
-                        <a href="#"><p><li>AI Use & Limitation</li></p></a> 
+                        <a onClick={() => handleLegalSection('privacy')}><p><li>Privacy Poilcy</li></p></a> 
+                        <a onClick={() => handleLegalSection('ai')}><p><li>AI Use & Limitation</li></p></a> 
                         <li><p id='all' style={{color: "#2400FF"}}>2026. All Rights Reserved</p></li> 
                         {/* <li><p style={{color: "#333232"}}>Designed by Ey</p></li> */} 
                     </ul>
@@ -248,6 +270,7 @@ const Quicklinks = styled.div`
     ul{ 
         a{ 
             text-decoration: none; 
+            cursor: pointer;
         } 
         p{ 
             font-family: 'Geist', sans-serif; 
@@ -268,6 +291,7 @@ const Quicklinks = styled.div`
         ul{
             a{
                 text-decoration: none;
+                cursor: pointer;
             }
             p{
                 font-family: 'Geist', sans-serif;
@@ -299,6 +323,7 @@ const Quicklinks = styled.div`
             
             a{
                 text-decoration: none;
+                cursor: pointer;
             }
             p{
                 font-family: 'Geist', sans-serif;
@@ -331,6 +356,7 @@ const Quicklinks = styled.div`
             
             a{
                 text-decoration: none;
+                cursor: pointer;
             }
             p{
                 font-family: 'Geist', sans-serif;
@@ -393,3 +419,4 @@ const All = styled.div`
     }
 
 `
+

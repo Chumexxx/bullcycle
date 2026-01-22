@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import LegalNoticeHeader from '../Components/LegalNoticeHeader'
 import LegalNoticeFooter from '../Components/LegalNoticeFooter'
@@ -7,6 +7,8 @@ const LegalNotice = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('terms')
   const [visibleSections, setVisibleSections] = useState(new Set(['terms']))
+  const menuRef = useRef(null)
+  const buttonRef = useRef(null)
 
   const handleSectionClick = (section) => {
     setActiveSection(section)
@@ -14,24 +16,61 @@ const LegalNotice = () => {
   }
 
   useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target)
+      ) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMenuOpen])
+
+  useEffect(() => {
     const handleScroll = () => {
       const sections = ['terms', 'privacy', 'risk', 'ai', 'intellectual', 'fraud']
-      const newVisibleSections = new Set()
+      const viewportHeight = window.innerHeight
+      const viewportCenter = viewportHeight / 2
 
       sections.forEach(sectionId => {
         const element = document.getElementById(sectionId)
         if (element) {
           const rect = element.getBoundingClientRect()
-          const viewportHeight = window.innerHeight
+          const sectionCenter = rect.top + (rect.height / 2)
           
-          // Check if any part of the section is visible in viewport
-          if (rect.top < viewportHeight && rect.bottom > 0) {
-            newVisibleSections.add(sectionId)
+          // Calculate distance from viewport center
+          const distanceFromCenter = Math.abs(viewportCenter - sectionCenter)
+          
+          // Calculate opacity (1 when centered, fades to 0.3 as it moves away)
+          // Using a smooth transition zone
+          let opacity
+          if (distanceFromCenter < viewportHeight * 0.3) {
+            // Fully visible when close to center
+            opacity = 1
+          } else if (distanceFromCenter < viewportHeight * 0.8) {
+            // Gradual fade
+            opacity = 1 - ((distanceFromCenter - viewportHeight * 0.3) / (viewportHeight * 0.5)) * 0.7
+          } else {
+            // Minimum opacity
+            opacity = 0.3
+          }
+          
+          element.style.opacity = opacity
+          
+          // Update active section (the one closest to center and most visible)
+          if (opacity > 0.7) {
+            setActiveSection(sectionId)
           }
         }
       })
-
-      setVisibleSections(newVisibleSections)
     }
 
     // Only add scroll listener on mobile
@@ -40,6 +79,15 @@ const LegalNotice = () => {
       handleScroll() // Initial check
       
       return () => window.removeEventListener('scroll', handleScroll)
+    } else {
+      // Reset opacity on desktop
+      const sections = ['terms', 'privacy', 'risk', 'ai', 'intellectual', 'fraud']
+      sections.forEach(sectionId => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          element.style.opacity = 1
+        }
+      })
     }
   }, [])
 
@@ -62,7 +110,7 @@ const LegalNotice = () => {
         </Shortcuts>
 
         <FullTexts>
-            <Terms id="terms" $isVisible={visibleSections.has('terms')}>
+            <Terms id="terms">
                 <Title>
                     <h1>
                         Terms & Conditions
@@ -97,7 +145,7 @@ const LegalNotice = () => {
 
             </Terms>
 
-            <Privacy id="privacy" $isVisible={visibleSections.has('privacy')}>
+            <Privacy id="privacy" >
                 <Title>
                     <h1>
                         Privacy Policy
@@ -134,7 +182,7 @@ const LegalNotice = () => {
 
             </Privacy>
 
-            <Risk id="risk" $isVisible={visibleSections.has('risk')}>
+            <Risk id="risk">
                 <Title>
                     <h1>
                         Risk Disclaimer
@@ -156,7 +204,7 @@ const LegalNotice = () => {
                 </Content>
             </Risk>
 
-            <AI id="ai" $isVisible={visibleSections.has('ai')}>
+            <AI id="ai">
                 <Title>
                     <h1>
                         AI Use & Limitation Disclaimer
@@ -176,7 +224,7 @@ const LegalNotice = () => {
                 </Content>
             </AI>
 
-            <Intellectual id="intellectual" $isVisible={visibleSections.has('intellectual')}>
+            <Intellectual id="intellectual" >
                 <Title>
                     <h1>
                         Intellectual Property Notice
@@ -190,7 +238,7 @@ const LegalNotice = () => {
                 </Content>
             </Intellectual>
 
-            <Anti id="fraud" $isVisible={visibleSections.has('fraud')}>
+            <Anti id="fraud">
                 <Title>
                     <h1>
                         Anti-Fraud & Security Notice
@@ -212,7 +260,7 @@ const LegalNotice = () => {
 
         </FullTexts>
 
-        <MobileMenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <MobileMenuButton ref={buttonRef} onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <p>Terms & Conditions</p>
           <Arrows>
             <Arrow>▲</Arrow>
@@ -221,7 +269,7 @@ const LegalNotice = () => {
         </MobileMenuButton>
 
         {isMenuOpen && (
-          <MobileMenu>
+          <MobileMenu ref={menuRef}>
             {activeSection === 'terms' && <CurrentlyReading>Currently reading</CurrentlyReading>}
             <MobileLink 
               href="#terms" 
@@ -293,6 +341,10 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 50px;
+     @media (max-width: 768px) {
+        padding-bottom: 0px;
+    }
 `
 
 const PageContent = styled.div`
@@ -444,7 +496,7 @@ const SectionBase = styled.div`
 
     @media (max-width: 425px) {
         margin-bottom: 35px;
-        opacity: ${props => props.$isVisible ? '1' : '0.3'};
+        opacity: 1;
     }
 
     @media (max-width: 320px) {

@@ -41,6 +41,8 @@ const Hero1 = () => {
   )
 }
 
+export default Hero1
+
 const Wrapper = styled.div`
     width: 100%;
     height: 100vh;
@@ -386,4 +388,3 @@ const HeroImage = styled.div`
     }
 `
 
-export default Hero1

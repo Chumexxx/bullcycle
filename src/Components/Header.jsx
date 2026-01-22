@@ -11,6 +11,14 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen)
   }
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+    setIsMenuOpen(false)
+  }
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -48,15 +56,17 @@ const Header = () => {
                     <span></span>
                     <span></span>
                 </CloseButton>
-                <a href="#about" onClick={() => setIsMenuOpen(false)}>About Us</a>
-                <a href="#ecosystem" onClick={() => setIsMenuOpen(false)}>Ecosystem</a>
-                <a href="#whitepaper" onClick={() => setIsMenuOpen(false)}>Download Whitepaper</a>
+                <a onClick={() => scrollToSection('hero2')}>About Us</a>
+                <a onClick={() => scrollToSection('hero5')}>Ecosystem</a>
+                <a href="#" onClick={() => setIsMenuOpen(false)}>Download Whitepaper</a>
             </Tags>
         
         </HeaderDiv>
     </Wrapper>
   )
 }
+
+export default Header
 
 const Wrapper = styled.div`
     margin-top: 40px;
@@ -280,5 +290,3 @@ const Tags = styled.div`
         }
     }
 `
-
-export default Header

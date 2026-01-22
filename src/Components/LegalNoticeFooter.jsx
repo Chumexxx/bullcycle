@@ -2,9 +2,31 @@ import React from 'react'
 import styled from 'styled-components'
 import globe from '../assets/globe.svg'
 import bullcycle from '../assets/bullcycle.svg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Footer = () => {
+const LegalNoticeFooter = () => {
+
+    const navigate = useNavigate()
+
+    const handleNavigateToSection = (sectionId) => {
+        navigate('/')
+        setTimeout(() => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+        }, 100)
+    }
+
+    const handleLegalSection = (sectionId) => {
+        navigate('/legal-notice')
+        setTimeout(() => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+        }, 100)
+    }
   return (
     <Wrapper>
 
@@ -31,15 +53,15 @@ const Footer = () => {
             <RightDiv>
                 <Quicklinks> 
                     <ul> 
-                        <a href="#"><p><li>About Us</li></p></a>
-                        <a href="#"><p><li>Ecosystem</li></p></a> 
+                        <a onClick={() => handleNavigateToSection('hero2')}><p><li>About Us</li></p></a>
+                        <a onClick={() => handleNavigateToSection('hero5')}><p><li>Ecosystem</li></p></a> 
                         <a href="#"><p><li>Whitepaper</li></p></a> 
                     </ul> 
                     <ul>
                         <Link to="/legal-notice"> <p><li>Legal Notices</li></p> </Link> 
-                        <a href="#"><p><li>Privacy Poilcy</li></p></a> 
-                        <a href="#"><p><li>AI Use & Limitation</li></p></a> 
-                        <li><p style={{color: "white", fontSize: "10px"}}>Designed by Ey</p></li> 
+                        <a onClick={() => handleLegalSection('privacy')}><p><li>Privacy Poilcy</li></p></a> 
+                        <a onClick={() => handleLegalSection('ai')}><p><li>AI Use & Limitation</li></p></a> 
+                        {/* <li><p style={{color: "white", fontSize: "10px"}}>Designed by Ey</p></li>  */}
                     </ul>
                 </Quicklinks>
             </RightDiv>
@@ -63,7 +85,7 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default LegalNoticeFooter
 
 const Wrapper = styled.div`
     margin-top: 60px;
@@ -168,6 +190,7 @@ const Quicklinks = styled.div`
     ul{ 
         a{ 
             text-decoration: none; 
+            cursor: pointer;
         } 
         p{ 
             font-family: 'Geist', sans-serif; 
@@ -188,6 +211,7 @@ const Quicklinks = styled.div`
         ul{
             a{
                 text-decoration: none;
+                cursor: pointer;
             }
             p{
                 font-family: 'Geist', sans-serif;
@@ -219,6 +243,7 @@ const Quicklinks = styled.div`
             
             a{
                 text-decoration: none;
+                cursor: pointer;
             }
             p{
                 font-family: 'Geist', sans-serif;
@@ -251,6 +276,7 @@ const Quicklinks = styled.div`
             
             a{
                 text-decoration: none;
+                cursor: pointer;
             }
             p{
                 font-family: 'Geist', sans-serif;

@@ -2,13 +2,21 @@ import React, { useState, useEffect, useRef } from 'react'
 import bullcycle from '../assets/bullcycle.svg'
 import styled from 'styled-components'
 
-const Header = () => {
+const LegalNoticeHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef(null)
   const hamburgerRef = useRef(null)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
+  }
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+    setIsMenuOpen(false)
   }
 
   useEffect(() => {
@@ -48,8 +56,8 @@ const Header = () => {
                     <span></span>
                     <span></span>
                 </CloseButton>
-                <a href="#about" onClick={() => setIsMenuOpen(false)}>About Us</a>
-                <a href="#ecosystem" onClick={() => setIsMenuOpen(false)}>Ecosystem</a>
+                <a onClick={() => scrollToSection('hero2')}>About Us</a>
+                <a onClick={() => scrollToSection('hero5')}>Ecosystem</a>
                 <a href="#whitepaper" onClick={() => setIsMenuOpen(false)}>Download Whitepaper</a>
             </Tags>
         
@@ -57,6 +65,8 @@ const Header = () => {
     </Wrapper>
   )
 }
+
+export default LegalNoticeHeader
 
 const Wrapper = styled.div`
     margin-top: 40px;
@@ -279,5 +289,3 @@ const Tags = styled.div`
         }
     }
 `
-
-export default Header

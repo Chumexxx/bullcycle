@@ -5,7 +5,7 @@ import gridbg from '../assets/gridbg.svg'
 
 const Hero2 = () => {
   return (
-    <Wrapper>
+    <Wrapper id="hero2">
         <PageContent>
             <Paragraphs>
                 <ProblemParagraph>
@@ -32,6 +32,8 @@ const Hero2 = () => {
     </Wrapper>
   )
 }
+
+export default Hero2
 
 const Wrapper = styled.div`
     width: 100%;
@@ -281,5 +283,3 @@ const ExplanationParagraph = styled.div`
         }
     }
 `
-
-export default Hero2
