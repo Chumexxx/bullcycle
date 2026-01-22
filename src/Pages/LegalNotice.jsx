@@ -342,7 +342,8 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     padding-bottom: 50px;
-     @media (max-width: 768px) {
+
+    @media (max-width: 768px) {
         padding-bottom: 0px;
     }
 `
@@ -371,7 +372,9 @@ const PageContent = styled.div`
     }
 
     @media (max-width: 480px) {
-        gap: 40px;
+        flex-direction: column;
+        gap: 0;
+        padding-bottom: 80px;
     }
 
     @media (max-width: 425px) {
@@ -450,13 +453,7 @@ const Shortcuts = styled.div`
     }
 
     @media (max-width: 480px) {
-        width: 220px;
-        h1 {
-            font-size: 16px;
-        }
-        a {
-            font-size: 16px;
-        }
+        display: none;
     }
 
     @media (max-width: 425px) {
@@ -491,7 +488,8 @@ const SectionBase = styled.div`
     }
 
     @media (max-width: 480px) {
-        margin-bottom: 40px;
+        margin-bottom: 35px;
+        opacity: 1;
     }
 
     @media (max-width: 425px) {
@@ -568,12 +566,12 @@ const Title = styled.div`
     }
 
     @media (max-width: 480px) {
-        margin-bottom: 22px;
+        margin-bottom: 20px;
         h1 {
-            font-size: 20px;
+            font-size: 16px;
         }
         p {
-            font-size: 16px;
+            font-size: 14px;
         }
     }
 
@@ -628,7 +626,7 @@ const Content = styled.div`
 
     @media (max-width: 480px) {
         p {
-            font-size: 14px;
+            font-size: 12px;
         }
     }
 
@@ -648,7 +646,7 @@ const Content = styled.div`
 const MobileMenuButton = styled.div`
     display: none;
 
-    @media (max-width: 425px) {
+    @media (max-width: 480px) {
         display: flex;
         position: fixed;
         bottom: 20px;
@@ -697,7 +695,7 @@ const Arrow = styled.span`
 const MobileMenu = styled.div`
     display: none;
 
-    @media (max-width: 425px) {
+    @media (max-width: 480px) {
         display: flex;
         flex-direction: column;
         position: fixed;
@@ -755,7 +753,7 @@ const FooterWrapper = styled.div`
     flex-direction: column;
     align-items: center;
 
-    @media (max-width: 425px) {
+    @media (max-width: 480px) {
         display: none;
     }
 `

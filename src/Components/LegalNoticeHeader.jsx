@@ -58,7 +58,7 @@ const LegalNoticeHeader = () => {
                 </CloseButton>
                 <a onClick={() => scrollToSection('hero3')}>About Us</a>
                 <a onClick={() => scrollToSection('hero5')}>Ecosystem</a>
-                <a href="#whitepaper" onClick={() => setIsMenuOpen(false)}>Download Whitepaper</a>
+                <a href="#" onClick={() => setIsMenuOpen(false)}>Download Whitepaper</a>
             </Tags>
         
         </HeaderDiv>
@@ -170,7 +170,7 @@ const Hamburger = styled.div`
     span {
         width: 25px;
         height: 3px;
-        background-color: white;
+        background-color: black;
         margin: 3px 0;
         transition: all 0.3s ease;
         border-radius: 3px;
