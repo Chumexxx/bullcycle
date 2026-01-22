@@ -190,10 +190,12 @@ const Hero6 = () => {
 
     // Auto-scroll functionality for mobile with bidirectional scrolling
     useEffect(() => {
+        let isUserInteracting = false
+
         const startAutoScroll = () => {
-            if (window.innerWidth <= 425 && scrollRef.current) {
+            if (window.innerWidth <= 425 && scrollRef.current && !isUserInteracting) {
                 autoScrollInterval.current = setInterval(() => {
-                    if (scrollRef.current) {
+                    if (scrollRef.current && !isUserInteracting) {
                         const scrollContainer = scrollRef.current
                         const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth
                         const currentScroll = scrollContainer.scrollLeft
@@ -213,7 +215,7 @@ const Hero6 = () => {
                             behavior: 'auto' 
                         })
                     }
-                }, 0) // Scroll every 20ms for smooth continuous motion
+                }, 20)
             }
         }
 
@@ -227,29 +229,24 @@ const Hero6 = () => {
         // Start auto-scroll on mobile
         startAutoScroll()
 
-        // Stop auto-scroll when user interacts
+        // Stop auto-scroll when user touches
         const handleTouchStart = () => {
+            isUserInteracting = true
             stopAutoScroll()
         }
 
         const handleTouchEnd = () => {
-            setTimeout(startAutoScroll, 20) // Resume after 2 seconds of no interaction
-        }
-
-        const handleScroll = () => {
-            // If user is manually scrolling, stop auto-scroll temporarily
-            if (autoScrollInterval.current) {
-                stopAutoScroll()
-                setTimeout(startAutoScroll, 20) // Resume after 2 seconds
-            }
+            setTimeout(() => {
+                isUserInteracting = false
+                startAutoScroll()
+            }, 2000) // Resume after 2 seconds of no interaction
         }
 
         const scrollContainer = scrollRef.current
 
-        if (scrollContainer) {
-            scrollContainer.addEventListener('touchstart', handleTouchStart)
-            scrollContainer.addEventListener('touchend', handleTouchEnd)
-            scrollContainer.addEventListener('scroll', handleScroll, { passive: true })
+        if (scrollContainer && window.innerWidth <= 425) {
+            scrollContainer.addEventListener('touchstart', handleTouchStart, { passive: true })
+            scrollContainer.addEventListener('touchend', handleTouchEnd, { passive: true })
         }
 
         // Cleanup
@@ -258,7 +255,6 @@ const Hero6 = () => {
             if (scrollContainer) {
                 scrollContainer.removeEventListener('touchstart', handleTouchStart)
                 scrollContainer.removeEventListener('touchend', handleTouchEnd)
-                scrollContainer.removeEventListener('scroll', handleScroll)
             }
         }
     }, [])
