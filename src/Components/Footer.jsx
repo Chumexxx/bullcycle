@@ -33,7 +33,7 @@ const Footer = () => {
 
         <PageContent>
             <LeftDiv>
-                <Image>
+                <Image onClick={() => handleNavigateToSection('hero1')}>
                     <img src={bullcycle} alt="bullcycle logo" />
                 </Image>
 
