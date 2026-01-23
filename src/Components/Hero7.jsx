@@ -343,18 +343,18 @@ const Section2 = styled.div`
 
     @media (max-width: 480px) {
         flex-direction: column;
-        margin-top: 60px;
+        margin-top:10px;
         text-align: center;
+        gap: 0px;
     }
 
     @media (max-width: 425px) {
         flex-direction: column;
-        margin-top: 60px;
         text-align: center;
     }
 
     @media (max-width: 320px) {
-        margin-top: 50px;
+        margin-top: 10px;
     }
 `
 

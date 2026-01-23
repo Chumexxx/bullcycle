@@ -1,21 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react'
 import bullcycle from '../assets/bullcycle.svg'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 
 const LegalNoticeHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef(null)
   const hamburgerRef = useRef(null)
+  const navigate = useNavigate()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+  const handleNavigateToSection = (sectionId) => {
+    navigate('/')
+    setTimeout(() => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 100)
     setIsMenuOpen(false)
   }
 
@@ -56,8 +61,8 @@ const LegalNoticeHeader = () => {
                     <span></span>
                     <span></span>
                 </CloseButton>
-                <a onClick={() => scrollToSection('hero3')}>About Us</a>
-                <a onClick={() => scrollToSection('hero5')}>Ecosystem</a>
+                <a onClick={() => handleNavigateToSection('hero3')}>About Us</a>
+                <a onClick={() => handleNavigateToSection('hero5')}>Ecosystem</a>
                 <a href="#" onClick={() => setIsMenuOpen(false)}>Download Whitepaper</a>
             </Tags>
         
@@ -118,6 +123,7 @@ const HeaderDiv = styled.div`
 `
 
 const Logo = styled.div`
+    cursor: pointer;
     img{
         background-color: transparent;
         height: 70px;
@@ -218,6 +224,7 @@ const Tags = styled.div`
     width: 400px;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
     a{
         font-family: 'Geist', sans-serif;
         font-weight: 600;

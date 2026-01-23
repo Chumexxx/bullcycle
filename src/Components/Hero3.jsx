@@ -544,9 +544,7 @@ const Line = styled.div`
     }
 
     @media (max-width: 480px) {
-        hr {
-            height: 120px;
-        }
+       display: none;
     }
 
     @media (max-width: 425px) {

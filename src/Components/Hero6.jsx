@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { motion, useAnimation } from 'framer-motion'
 import styled from 'styled-components'
 import gridbg from '../assets/gridbg.svg'
 import medledger from '../assets/medledger.svg'
@@ -35,9 +36,13 @@ import download2 from '../assets/download2.svg'
 const Hero6 = () => {
     const scrollRef = useRef(null)
     const [activeCard, setActiveCard] = useState(null)
-    const autoScrollInterval = useRef(null)
-    const scrollDirection = useRef(1) 
- 
+    const controls = useAnimation()
+    const [isUserInteracting, setIsUserInteracting] = useState(false)
+    const inactivityTimer = useRef(null)
+    
+    const SCROLL_SPEED = 5
+    const SCROLL_DURATION_MULTIPLIER = 0.05
+
         const cards = [
             {
               text: 'MedLedger AI is Bullcycle’s healthcare intelligence and blockchain infrastructure built for resilience, privacy, and patient dignity. It brings together smart health wallets, self-sovereign identity, AI triage, secure data exchange, Health DAOs, and on-chain micro-insurance to create a network of healing powered by code and compassion. In this system, medical care becomes instant, tamper-proof, and accessible without paperwork, bribes, or delay',
@@ -176,88 +181,98 @@ const Hero6 = () => {
             },
         ] 
 
+    // Duplicate coins for seamless infinite scroll
+    const duplicatedCards = [...cards, ...cards, ...cards, ...cards, ...cards, ...cards, ...cards]
+
     const scrollLeft = () => {
         if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: -420, behavior: 'smooth' })
+            scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' })
         }
     }
 
     const scrollRight = () => {
         if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: 420, behavior: 'smooth' })
+            scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' })
         }
     }
 
-    // Auto-scroll functionality for mobile with bidirectional scrolling
+   const startAutoScroll = async () => {
+        if (window.innerWidth <= 480 && scrollRef.current && !isUserInteracting) {
+            const scrollContainer = scrollRef.current
+            const totalWidth = scrollContainer.scrollWidth
+            const containerWidth = scrollContainer.clientWidth
+            const scrollDistance = (totalWidth - containerWidth) / 3
+            
+            // Calculate duration based on distance and speed
+            const duration = (scrollDistance / SCROLL_SPEED) * SCROLL_DURATION_MULTIPLIER
+
+            await controls.start({
+                x: -scrollDistance,
+                transition: {
+                    duration: duration,
+                    ease: "linear",
+                    repeat: Infinity,
+                    repeatType: "loop"
+                }
+            })
+        }
+    }
+
+    const stopAutoScroll = () => {
+        controls.stop()
+    }
+
+    const handleUserInteraction = () => {
+        setIsUserInteracting(true)
+        stopAutoScroll()
+        
+        // Clear existing timer
+        if (inactivityTimer.current) {
+            clearTimeout(inactivityTimer.current)
+        }
+
+        // Set new timer for 3 seconds
+        inactivityTimer.current = setTimeout(() => {
+            setIsUserInteracting(false)
+        }, 3000) // Resume after 3 seconds of inactivity
+    }
+
     useEffect(() => {
-        let isUserInteracting = false
-
-        const startAutoScroll = () => {
-            if (window.innerWidth <= 480 && scrollRef.current && !isUserInteracting) {
-                autoScrollInterval.current = setInterval(() => {
-                    if (scrollRef.current && !isUserInteracting) {
-                        const scrollContainer = scrollRef.current
-                        const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth
-                        const currentScroll = scrollContainer.scrollLeft
-                        
-                        // Check if we've reached the end (right side)
-                        if (currentScroll >= maxScroll - 5) {
-                            scrollDirection.current = -1 // Change direction to left
-                        }
-                        // Check if we've reached the beginning (left side)
-                        else if (currentScroll <= 5) {
-                            scrollDirection.current = 1 // Change direction to right
-                        }
-                        
-                        // Scroll in the current direction
-                        scrollContainer.scrollBy({ 
-                            left: scrollDirection.current * 1, 
-                            behavior: 'auto' 
-                        })
-                    }
-                }, 20)
-            }
-        }
-
-        const stopAutoScroll = () => {
-            if (autoScrollInterval.current) {
-                clearInterval(autoScrollInterval.current)
-                autoScrollInterval.current = null
-            }
-        }
-
-        // Start auto-scroll on mobile
-        startAutoScroll()
-
-        // Stop auto-scroll when user touches
-        const handleTouchStart = () => {
-            isUserInteracting = true
+        if (!isUserInteracting && window.innerWidth <= 480) {
+            startAutoScroll()
+        } else {
             stopAutoScroll()
         }
+    }, [isUserInteracting])
 
-        const handleTouchEnd = () => {
-            setTimeout(() => {
-                isUserInteracting = false
-                startAutoScroll()
-            }, 2000) // Resume after 2 seconds of no interaction
+    useEffect(() => {
+        // Start auto-scroll immediately on mobile
+        if (window.innerWidth <= 480) {
+            startAutoScroll()
         }
 
         const scrollContainer = scrollRef.current
 
         if (scrollContainer && window.innerWidth <= 480) {
-            scrollContainer.addEventListener('touchstart', handleTouchStart, { passive: true })
-            scrollContainer.addEventListener('touchend', handleTouchEnd, { passive: true })
+            scrollContainer.addEventListener('touchstart', handleUserInteraction, { passive: true })
+            scrollContainer.addEventListener('touchmove', handleUserInteraction, { passive: true })
+            scrollContainer.addEventListener('scroll', handleUserInteraction, { passive: true })
         }
 
         // Cleanup
         return () => {
             stopAutoScroll()
+            if (inactivityTimer.current) {
+                clearTimeout(inactivityTimer.current)
+            }
             if (scrollContainer) {
-                scrollContainer.removeEventListener('touchstart', handleTouchStart)
-                scrollContainer.removeEventListener('touchend', handleTouchEnd)
+                scrollContainer.removeEventListener('touchstart', handleUserInteraction)
+                scrollContainer.removeEventListener('touchmove', handleUserInteraction)
+                scrollContainer.removeEventListener('scroll', handleUserInteraction)
             }
         }
     }, [])
+
 
   return (
     <Wrapper id="hero6">
@@ -280,7 +295,11 @@ const Hero6 = () => {
                 </Navigations>
 
                 <AICards ref={scrollRef}>
-                    {cards.map((card, index) => (
+                    <motion.div
+                        animate={controls}
+                        style={{ display: 'flex', gap: '20px' }}
+                    >
+                        {duplicatedCards.map((card, index) => (
                                 <Card 
                                     key={index}
                                     $isActive={activeCard === index}
@@ -294,6 +313,7 @@ const Hero6 = () => {
                                 </Card>
                             ))
                         }
+                    </motion.div>
                 </AICards>
             </CardsSection>
 
@@ -566,6 +586,7 @@ const AICards = styled.div`
     scroll-behavior: smooth;
     padding: 10px 0;
     margin-bottom: 50px;
+    -webkit-overflow-scrolling: touch;
 
     &::-webkit-scrollbar {
         display: none;
@@ -591,6 +612,11 @@ const AICards = styled.div`
     @media (max-width: 480px) {
         gap: 10px;
         margin-bottom: 25px;
+        cursor: grab;
+        
+        &:active {
+            cursor: grabbing;
+        }
     }
 
     @media (max-width: 425px) {

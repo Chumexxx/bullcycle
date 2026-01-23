@@ -154,6 +154,7 @@ const RightDiv = styled.div`
 `
 
 const Image = styled.div`
+    cursor: pointer;
     @media (max-width: 1024px) {
         img{
             width: 100px;

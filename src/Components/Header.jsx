@@ -88,7 +88,7 @@ const HeaderDiv = styled.div`
     width: 70%;
     height: 30px;
     padding: 20px 50px;
-    background-color: white;
+    background-color: transparent;
     position: relative;
 
     @media (max-width: 2560px) {
@@ -118,6 +118,7 @@ const HeaderDiv = styled.div`
 `
 
 const Logo = styled.div`
+    cursor: pointer;
     img{
         background-color: transparent;
         height: 70px;
@@ -171,7 +172,7 @@ const Hamburger = styled.div`
     span {
         width: 25px;
         height: 3px;
-        background-color: black;
+        background-color: white;
         margin: 3px 0;
         transition: all 0.3s ease;
         border-radius: 3px;
@@ -199,7 +200,7 @@ const CloseButton = styled.div`
             position: absolute;
             width: 25px;
             height: 3px;
-            background-color: white;
+            background-color: black;
             border-radius: 3px;
             top: 50%;
             left: 50%;
@@ -219,6 +220,7 @@ const Tags = styled.div`
     width: 400px;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
     
     a{
         font-family: 'Geist', sans-serif;
@@ -226,7 +228,7 @@ const Tags = styled.div`
         font-size: 16px;
         line-height: 100%;
         text-decoration: none;
-        color: black;
+        color: white;
         transition: opacity 0.2s;
 
         &:hover {
