@@ -12,7 +12,7 @@ const Hero1 = () => {
         }
     }
   return (
-    <Wrapper>
+    <Wrapper id="hero1">
       <Header />
 
       <PageContent>

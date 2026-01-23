@@ -32,8 +32,8 @@ const LegalNoticeFooter = () => {
 
         <PageContent>
             <LeftDiv>
-                <Image>
-                    <img src={bullcycle} alt="bull logo" />
+                <Image onClick={() => handleNavigateToSection('hero1')}>
+                    <img src={bullcycle} alt="bullcycle logo" />
                 </Image>
 
                 <Paragraph>

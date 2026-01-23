@@ -46,8 +46,8 @@ const LegalNoticeHeader = () => {
   return (
     <Wrapper>
         <HeaderDiv>
-            <Logo>
-                <img src={bullcycle} alt="BullCycle Logo" />
+            <Logo onClick={() => handleNavigateToSection('hero1')}>
+                <img src={bullcycle} alt="bullCycle logo" />
             </Logo>
 
             <Hamburger ref={hamburgerRef} onClick={toggleMenu} $isOpen={isMenuOpen}>

@@ -34,7 +34,7 @@ const Footer = () => {
         <PageContent>
             <LeftDiv>
                 <Image>
-                    <img src={bullcycle} alt="bullcycle image" />
+                    <img src={bullcycle} alt="bullcycle logo" />
                 </Image>
 
                 <Paragraph>

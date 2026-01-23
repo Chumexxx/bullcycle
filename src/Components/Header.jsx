@@ -42,7 +42,7 @@ const Header = () => {
     <Wrapper>
         <HeaderDiv>
             <Logo>
-                <img src={bullcycle} alt="BullCycle Logo" />
+                <img src={bullcycle} alt="bullCycle Logo" />
             </Logo>
 
             <Hamburger ref={hamburgerRef} onClick={toggleMenu} $isOpen={isMenuOpen}>
@@ -121,6 +121,8 @@ const Logo = styled.div`
     cursor: pointer;
     img{
         background-color: transparent;
+        /* background-color: #ffffff9b; */
+        border-radius: 10px;
         height: 70px;
         width: auto;
     }
