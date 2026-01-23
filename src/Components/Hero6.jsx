@@ -239,7 +239,7 @@ const Hero6 = () => {
             setTimeout(() => {
                 isUserInteracting = false
                 startAutoScroll()
-            }, 5000) // Resume after 5 seconds of no interaction
+            }, 20000) // Resume after 5 seconds of no interaction
         }
 
         const scrollContainer = scrollRef.current

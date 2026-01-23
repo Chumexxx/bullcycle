@@ -119,7 +119,7 @@ const Hero5 = () => {
             setTimeout(() => {
                 isUserInteracting = false
                 startAutoScroll()
-            }, 5000)
+            }, 20000)
         }
 
         const scrollContainer = scrollRef.current
