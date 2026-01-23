@@ -1,6 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
-import { motion, useAnimation } from 'framer-motion'
 import lovecoin from '../assets/lovecoin.svg'
 import joycoin from '../assets/joycoin.svg'
 import peacecoin from '../assets/peacecoin.svg' 
@@ -15,12 +14,8 @@ import rightarrow from '../assets/rightarrow.svg'
 
 const Hero5 = () => {
     const scrollRef = useRef(null)
-    const controls = useAnimation()
-    const [isUserInteracting, setIsUserInteracting] = useState(false)
-    const inactivityTimer = useRef(null)
-    
-    const SCROLL_SPEED = 5 // Lower = faster, Higher = slower 
-    const SCROLL_DURATION_MULTIPLIER = 0.05 // Adjust overall animation speed 
+    const autoScrollInterval = useRef(null)
+    const scrollDirection = useRef(1)
 
     const coins = [
         {
@@ -59,142 +54,133 @@ const Hero5 = () => {
           coin: <img src={gentlenesscoin} alt="coin" />,
           title: 'GENTLENESSCOIN',
         },
-    ]
-
-    // Duplicate coins for seamless infinite scroll
-    const duplicatedCoins = [...coins, ...coins, ...coins, ...coins, ...coins, ...coins, ...coins]
+    ] 
 
     const scrollLeft = () => {
         if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' })
+            scrollRef.current.scrollBy({ left: -420, behavior: 'smooth' })
         }
     }
 
     const scrollRight = () => {
         if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' })
+            scrollRef.current.scrollBy({ left: 420, behavior: 'smooth' })
         }
     }
 
-    const startAutoScroll = async () => {
-        if (window.innerWidth <= 480 && scrollRef.current && !isUserInteracting) {
-            const scrollContainer = scrollRef.current
-            const totalWidth = scrollContainer.scrollWidth
-            const containerWidth = scrollContainer.clientWidth
-            const scrollDistance = (totalWidth - containerWidth) / 3 // Scroll one set of coins
-            
-            // Calculate duration based on distance and speed
-            const duration = (scrollDistance / SCROLL_SPEED) * SCROLL_DURATION_MULTIPLIER
-
-            await controls.start({
-                x: -scrollDistance,
-                transition: {
-                    duration: duration,
-                    ease: "linear",
-                    repeat: Infinity,
-                    repeatType: "loop"
-                }
-            })
-        }
-    }
-
-    const stopAutoScroll = () => {
-        controls.stop()
-    }
-
-    const handleUserInteraction = () => {
-        setIsUserInteracting(true)
-        stopAutoScroll()
-        
-        // Clear existing timer
-        if (inactivityTimer.current) {
-            clearTimeout(inactivityTimer.current)
-        }
-
-        // Set new timer for 3 seconds
-        inactivityTimer.current = setTimeout(() => {
-            setIsUserInteracting(false)
-        }, 3000) // Resume after 3 seconds of inactivity
-    }
-
+    // Auto-scroll functionality for mobile with bidirectional scrolling
     useEffect(() => {
-        if (!isUserInteracting && window.innerWidth <= 480) {
-            startAutoScroll()
-        } else {
+        let isUserInteracting = false
+
+        const startAutoScroll = () => {
+            if (window.innerWidth <= 480 && scrollRef.current && !isUserInteracting) {
+                autoScrollInterval.current = setInterval(() => {
+                    if (scrollRef.current && !isUserInteracting) {
+                        const scrollContainer = scrollRef.current
+                        const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth
+                        const currentScroll = scrollContainer.scrollLeft
+                        
+                        // Check if we've reached the end (right side)
+                        if (currentScroll >= maxScroll - 5) {
+                            scrollDirection.current = -1 // Change direction to left
+                        }
+                        // Check if we've reached the beginning (left side)
+                        else if (currentScroll <= 5) {
+                            scrollDirection.current = 1 // Change direction to right
+                        }
+                        
+                        // Scroll in the current direction
+                        scrollContainer.scrollBy({ 
+                            left: scrollDirection.current * 3, 
+                            behavior: 'auto' 
+                        })
+                    }
+                }, 20)
+            }
+        }
+
+        const stopAutoScroll = () => {
+            if (autoScrollInterval.current) {
+                clearInterval(autoScrollInterval.current)
+                autoScrollInterval.current = null
+            }
+        }
+
+        // Start auto-scroll on mobile
+        startAutoScroll()
+
+        // Stop auto-scroll when user touches
+        const handleTouchStart = () => {
+            isUserInteracting = true
             stopAutoScroll()
         }
-    }, [isUserInteracting])
 
-    useEffect(() => {
-        // Start auto-scroll immediately on mobile
-        if (window.innerWidth <= 480) {
-            startAutoScroll()
+        const handleTouchEnd = () => {
+            setTimeout(() => {
+                isUserInteracting = false
+                startAutoScroll()
+            }, 5000)
         }
 
         const scrollContainer = scrollRef.current
 
         if (scrollContainer && window.innerWidth <= 480) {
-            scrollContainer.addEventListener('touchstart', handleUserInteraction, { passive: true })
-            scrollContainer.addEventListener('touchmove', handleUserInteraction, { passive: true })
-            scrollContainer.addEventListener('scroll', handleUserInteraction, { passive: true })
+            scrollContainer.addEventListener('touchstart', handleTouchStart, { passive: true })
+            scrollContainer.addEventListener('touchend', handleTouchEnd, { passive: true })
         }
 
         // Cleanup
         return () => {
             stopAutoScroll()
-            if (inactivityTimer.current) {
-                clearTimeout(inactivityTimer.current)
-            }
             if (scrollContainer) {
-                scrollContainer.removeEventListener('touchstart', handleUserInteraction)
-                scrollContainer.removeEventListener('touchmove', handleUserInteraction)
-                scrollContainer.removeEventListener('scroll', handleUserInteraction)
+                scrollContainer.removeEventListener('touchstart', handleTouchStart)
+                scrollContainer.removeEventListener('touchend', handleTouchEnd)
             }
         }
     }, [])
 
-    return (
-        <Wrapper id="hero5">
-            <PageContent>
-                <Paragraphs>
-                    <Paragraph1>
-                        <h1>
-                            THE FRUITS OF THE <br /> SPIRIT ECONOMY
-                        </h1>
-                    </Paragraph1>
+  return (
+    <Wrapper id="hero5">
 
-                    <Paragraph2>
-                        <p>
-                            Bullcycle introduces the world's first Virtue-Based hybrid confidential Stablecoins, digital currencies inspired by the nine Fruits of the Spirit. Each coin embodies a timeless human value: <br /> <span style={{color: '#2400FF'}}>Love, Joy, Peace, Patience, Kindness, Goodness, Faithfulness, Gentleness, Self-Control.</span> 
-                            <br /> <br />
-                            These are not tokens for speculation, but currencies for restoration designed to fund peacebuilding, reward generosity, and cultivate self-discipline in the global economy.
-                        </p>
-                    </Paragraph2>
-                </Paragraphs>
+        <PageContent>
 
-                <CoinsSection>
-                    <Navigations>
-                        <img src={leftarrow} alt="Left Arrow" onClick={scrollLeft} />
-                        <img src={rightarrow} alt="Right Arrow" onClick={scrollRight} />
-                    </Navigations>
-                    
-                    <CoinsWrapper ref={scrollRef}>
-                        <motion.div
-                            animate={controls}
-                            style={{ display: 'flex', gap: '20px' }}
-                        >
-                            {duplicatedCoins.map((card, index) => (
-                                <Coin key={index}>
-                                    <Image>{card.coin}</Image>
-                                    <Title>{card.title}</Title>
-                                </Coin>
-                            ))}
-                        </motion.div>
-                    </CoinsWrapper>
-                </CoinsSection>
-            </PageContent>
-        </Wrapper>
-    )
+            <Paragraphs>
+                <Paragraph1>
+                    <h1>
+                        THE FRUITS OF THE <br /> SPIRIT ECONOMY
+                    </h1>
+                </Paragraph1>
+
+                <Paragraph2>
+                    <p>
+                        Bullcycle introduces the world's first Virtue-Based hybrid confidential Stablecoins, digital currencies inspired by the nine Fruits of the Spirit. Each coin embodies a timeless human value: <br /> <span style={{color: '#2400FF'}}>Love, Joy, Peace, Patience, Kindness, Goodness, Faithfulness, Gentleness, Self-Control.</span> 
+                        <br /> <br />
+                        These are not tokens for speculation, but currencies for restoration designed to fund peacebuilding, reward generosity, and cultivate self-discipline in the global economy.
+                    </p>
+                </Paragraph2>
+            </Paragraphs>
+
+            <CoinsSection>
+                <Navigations>
+                    <img src={leftarrow} alt="Left Arrow" onClick={scrollLeft} />
+                    <img src={rightarrow} alt="Right Arrow" onClick={scrollRight} />
+                </Navigations>
+                
+                <Coins ref={scrollRef}>
+                    {coins.map((card, index) => (
+                            <Coin key={index}>
+                                <Image>{card.coin}</Image>
+                                <Title>{card.title}</Title>
+                            </Coin>
+                        ))
+                    }
+                </Coins>
+            </CoinsSection>
+            
+        </PageContent>
+      
+    </Wrapper>
+  )
 }
 
 export default Hero5
@@ -472,12 +458,13 @@ const Navigations = styled.div`
     }
 `
 
-const CoinsWrapper = styled.div`
+const Coins = styled.div`
+    display: flex;
+    gap: 20px;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
     padding: 10px 0;
-    -webkit-overflow-scrolling: touch;
 
     &::-webkit-scrollbar {
         display: none;
@@ -485,21 +472,30 @@ const CoinsWrapper = styled.div`
     -ms-overflow-style: none;
     scrollbar-width: none;
 
+    @media (max-width: 1440px) {
+        gap: 18px;
+    }
+
+    @media (max-width: 1024px) {
+        gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+        gap: 14px;
+    }
+
     @media (max-width: 480px) {
-       padding: 10px 0;
-        cursor: grab;
-        
-        &:active {
-            cursor: grabbing;
-        }
+        gap: 15px;
+        padding: 10px 0;
     }
 
     @media (max-width: 425px) {
+        gap: 15px;
         padding: 10px 0;
     }
 
     @media (max-width: 320px) {
-        padding: 10px 0;
+        gap: 12px;
     }
 `
 
@@ -514,7 +510,6 @@ const Coin = styled.div`
     justify-content: center;
     align-items: left;
     flex-shrink: 0;
-    cursor: pointer;
 
     @media (max-width: 1440px) {
         min-width: 180px;
