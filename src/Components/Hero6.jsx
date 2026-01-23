@@ -211,7 +211,7 @@ const Hero6 = () => {
                         
                         // Scroll in the current direction
                         scrollContainer.scrollBy({ 
-                            left: scrollDirection.current * 3, 
+                            left: scrollDirection.current * 4, 
                             behavior: 'auto' 
                         })
                     }
