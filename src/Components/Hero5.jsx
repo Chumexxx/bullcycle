@@ -71,6 +71,9 @@ const Hero5 = () => {
     // Auto-scroll functionality for mobile with bidirectional scrolling
     useEffect(() => {
         let isUserInteracting = false
+        let lastScrollPosition = 0
+        let scrollCheckInterval = null
+        let resumeTimeout = null
 
         const startAutoScroll = () => {
             if (window.innerWidth <= 480 && scrollRef.current && !isUserInteracting) {
@@ -90,10 +93,8 @@ const Hero5 = () => {
                         }
                         
                         // Scroll in the current direction
-                        scrollContainer.scrollBy({ 
-                            left: scrollDirection.current * 3, 
-                            behavior: 'auto' 
-                        })
+                        scrollContainer.scrollLeft += scrollDirection.current * 3
+                        lastScrollPosition = scrollContainer.scrollLeft
                     }
                 }, 20)
             }
@@ -104,29 +105,107 @@ const Hero5 = () => {
                 clearInterval(autoScrollInterval.current)
                 autoScrollInterval.current = null
             }
+            if (scrollCheckInterval) {
+                clearInterval(scrollCheckInterval)
+                scrollCheckInterval = null
+            }
+            if (resumeTimeout) {
+                clearTimeout(resumeTimeout)
+                resumeTimeout = null
+            }
         }
 
-        // Start auto-scroll on mobile
-        startAutoScroll()
+        const scheduleResume = () => {
+            // Clear any existing resume timeout
+            if (resumeTimeout) {
+                clearTimeout(resumeTimeout)
+            }
+            
+            // Schedule auto-scroll to resume after 20 seconds
+            resumeTimeout = setTimeout(() => {
+                isUserInteracting = false
+                startScrollMonitoring() // Restart monitoring when resuming
+                startAutoScroll()
+            }, 20000)
+        }
 
-        // Stop auto-scroll when user touches
-        const handleTouchStart = () => {
+        const handleUserScroll = () => {
+            if (!isUserInteracting) {
+                isUserInteracting = true
+                stopAutoScroll()
+            }
+            scheduleResume()
+        }
+
+        // Monitor scroll position changes to detect user scrolling
+        const startScrollMonitoring = () => {
+            if (scrollCheckInterval) {
+                clearInterval(scrollCheckInterval)
+            }
+            
+            scrollCheckInterval = setInterval(() => {
+                if (scrollRef.current && !isUserInteracting) {
+                    const currentPosition = scrollRef.current.scrollLeft
+                    const expectedPosition = lastScrollPosition + (scrollDirection.current * 3)
+                    
+                    // If scroll position changed differently than expected, user is scrolling
+                    if (Math.abs(currentPosition - expectedPosition) > 5) {
+                        handleUserScroll()
+                    }
+                }
+            }, 50) // Check every 50ms for immediate response
+        }
+
+        // Start auto-scroll and monitoring on mobile
+        if (window.innerWidth <= 480) {
+            startAutoScroll()
+            startScrollMonitoring()
+        }
+
+        // Handle any touch interaction
+        const handleTouchStart = (e) => {
             isUserInteracting = true
             stopAutoScroll()
         }
 
-        const handleTouchEnd = () => {
-            setTimeout(() => {
-                isUserInteracting = false
-                startAutoScroll()
-            }, 20000)
+        const handleTouchMove = (e) => {
+            isUserInteracting = true
+            stopAutoScroll()
+            scheduleResume()
+        }
+
+        const handleTouchEnd = (e) => {
+            scheduleResume()
+        }
+
+        // Handle scroll events - most reliable for detecting user scroll
+        const handleScroll = () => {
+            if (scrollRef.current) {
+                const currentPosition = scrollRef.current.scrollLeft
+                
+                // If position changed and auto-scroll is running, user must be scrolling
+                if (autoScrollInterval.current) {
+                    const expectedChange = scrollDirection.current * 3
+                    const actualChange = currentPosition - lastScrollPosition
+                    
+                    // If the change is significantly different, user is scrolling
+                    if (Math.abs(actualChange - expectedChange) > 2) {
+                        handleUserScroll()
+                    }
+                }
+                
+                lastScrollPosition = currentPosition
+            }
         }
 
         const scrollContainer = scrollRef.current
 
         if (scrollContainer && window.innerWidth <= 480) {
+            // Add all event listeners
             scrollContainer.addEventListener('touchstart', handleTouchStart, { passive: true })
+            scrollContainer.addEventListener('touchmove', handleTouchMove, { passive: true })
             scrollContainer.addEventListener('touchend', handleTouchEnd, { passive: true })
+            scrollContainer.addEventListener('scroll', handleScroll, { passive: true })
         }
 
         // Cleanup
@@ -134,7 +213,9 @@ const Hero5 = () => {
             stopAutoScroll()
             if (scrollContainer) {
                 scrollContainer.removeEventListener('touchstart', handleTouchStart)
+                scrollContainer.removeEventListener('touchmove', handleTouchMove)
                 scrollContainer.removeEventListener('touchend', handleTouchEnd)
+                scrollContainer.removeEventListener('scroll', handleScroll)
             }
         }
     }, [])
@@ -465,6 +546,7 @@ const Coins = styled.div`
     overflow-y: hidden;
     scroll-behavior: smooth;
     padding: 10px 0;
+    -webkit-overflow-scrolling: touch;
 
     &::-webkit-scrollbar {
         display: none;
@@ -487,6 +569,8 @@ const Coins = styled.div`
     @media (max-width: 480px) {
         gap: 15px;
         padding: 10px 0;
+        -webkit-overflow-scrolling: touch;
+        will-change: scroll-position; 
     }
 
     @media (max-width: 425px) {
