@@ -74,7 +74,6 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: transparent;
 
     @media (max-width: 768px) {
         margin-top: 20px;
@@ -202,7 +201,7 @@ const Hamburger = styled.div`
     span {
         width: 25px;
         height: 3px;
-        background-color: white;
+        background-color: black;
         margin: 3px 0;
         transition: all 0.3s ease;
         border-radius: 3px;
@@ -258,7 +257,7 @@ const Tags = styled.div`
         font-size: 16px;
         line-height: 100%;
         text-decoration: none;
-        color: white;
+        color: black;
         transition: opacity 0.2s;
 
         &:hover {

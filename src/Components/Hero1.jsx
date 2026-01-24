@@ -31,7 +31,7 @@ const Hero1 = () => {
                 </Page1Button1>
 
                 <Page1Button2>
-                    <img src={download} alt="Download Icon" />
+                    <img style={{color: "black"}} src={download} alt="Download Icon" />
                     <p>Download Whitepaper</p>
                 </Page1Button2>
             </PageButtons>
@@ -49,12 +49,12 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #030013;
+    background-color: white;
     overflow: hidden;
-    background-image: url(${herobg});
+    /* background-image: url(${herobg});
     background-size: 70%;
     background-position: center calc(100% + 350px);
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 
     @media (max-width: 1440px) {
         background-size: 80%;
@@ -135,7 +135,7 @@ const Texts = styled.div`
         font-weight: 400;
         font-size: 90px;
         line-height: 100%;
-        color: white;
+        color: #2400FF;
     }
 
     p{
@@ -144,7 +144,7 @@ const Texts = styled.div`
         font-size: 20px;
         line-height: 100%; 
         text-align: center;
-        color: white;
+        color: black;
     }
 
     @media (max-width: 1024px) {
@@ -228,7 +228,7 @@ const PageButtons = styled.div`
 const Page1Button1 = styled.div`
     width: 200px;
     height: 40px;
-    background-color: #FFFFFF;
+    background-color: transparent;
     border-radius: 8px;
     padding: 5px;
     display: flex;
@@ -236,6 +236,8 @@ const Page1Button1 = styled.div`
     align-items: center;
     cursor: pointer;
     transition: all 0.2s;
+    border: 1px solid white;
+    
 
      &:hover {
         transform: scale(1.05);
@@ -314,7 +316,7 @@ const Page1Button2 = styled.div`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 1px solid white;
+    border: 1px solid #2400FF;
     cursor: pointer;
     transition: all 0.2s;
 
@@ -327,7 +329,7 @@ const Page1Button2 = styled.div`
     }
 
     p{
-        color: white;
+        color: black;
         font-family: 'Geist', SemiBold;
         font-weight: 600;
         font-size: 16px;
