@@ -546,7 +546,7 @@ const Coins = styled.div`
     overflow-y: hidden;
     scroll-behavior: smooth;
     padding: 10px 0;
-    -webkit-overflow-scrolling: touch;
+    /* -webkit-overflow-scrolling: touch; */
 
     &::-webkit-scrollbar {
         display: none;
@@ -569,8 +569,8 @@ const Coins = styled.div`
     @media (max-width: 480px) {
         gap: 15px;
         padding: 10px 0;
-        -webkit-overflow-scrolling: touch;
-        will-change: scroll-position; 
+        /* -webkit-overflow-scrolling: touch; */
+        /* will-change: scroll-position;  */
     }
 
     @media (max-width: 425px) {
