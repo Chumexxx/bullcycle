@@ -92,7 +92,7 @@ const Hero5 = () => {
                         }
                         
                         // Scroll in the current direction - use scrollLeft for iOS compatibility
-                        scrollContainer.scrollLeft += scrollDirection.current * 5
+                        scrollContainer.scrollLeft += scrollDirection.current * 3
                     }
                 }, 20)
             }
