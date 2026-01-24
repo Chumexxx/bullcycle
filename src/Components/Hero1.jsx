@@ -97,7 +97,7 @@ const PageContent = styled.div`
     justify-content: center;
     align-items: center;
     gap: 30px;
-    margin-bottom: 500px;
+    /* margin-bottom: 500px; */
 
     @media (max-width: 1440px) {
         gap: 35px;
@@ -113,15 +113,15 @@ const PageContent = styled.div`
 
     @media (max-width: 480px) {
         gap: 20px;
-        margin-bottom: 180px;
+        /* margin-bottom: 180px; */
     }
 
     @media (max-width: 425px) {
-        margin-bottom: 180px;
+        /* margin-bottom: 180px; */
     }
 
     @media (max-width: 320px) {
-        margin-bottom: 180px;
+        /* margin-bottom: 180px; */
     }
 `
 const Texts = styled.div`
@@ -236,7 +236,7 @@ const Page1Button1 = styled.div`
     align-items: center;
     cursor: pointer;
     transition: all 0.2s;
-    border: 1px solid white;
+    border: 1px solid black;
     
 
      &:hover {
