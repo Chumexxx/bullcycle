@@ -31,7 +31,7 @@ const Hero1 = () => {
                 </Page1Button1>
 
                 <Page1Button2>
-                    <img style={{color: "black"}} src={download} alt="Download Icon" />
+                    <img src={download} alt="Download Icon" />
                     <p>Download Whitepaper</p>
                 </Page1Button2>
             </PageButtons>
@@ -49,12 +49,12 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: #030013;
     overflow: hidden;
-    /* background-image: url(${herobg});
+    background-image: url(${herobg});
     background-size: 70%;
     background-position: center calc(100% + 350px);
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat;
 
     @media (max-width: 1440px) {
         background-size: 80%;
@@ -97,7 +97,7 @@ const PageContent = styled.div`
     justify-content: center;
     align-items: center;
     gap: 30px;
-    /* margin-bottom: 500px; */
+    margin-bottom: 500px;
 
     @media (max-width: 1440px) {
         gap: 35px;
@@ -113,15 +113,15 @@ const PageContent = styled.div`
 
     @media (max-width: 480px) {
         gap: 20px;
-        /* margin-bottom: 180px; */
+        margin-bottom: 180px;
     }
 
     @media (max-width: 425px) {
-        /* margin-bottom: 180px; */
+        margin-bottom: 180px;
     }
 
     @media (max-width: 320px) {
-        /* margin-bottom: 180px; */
+        margin-bottom: 180px;
     }
 `
 const Texts = styled.div`
@@ -135,7 +135,7 @@ const Texts = styled.div`
         font-weight: 400;
         font-size: 90px;
         line-height: 100%;
-        color: #2400FF;
+        color: white;
     }
 
     p{
@@ -144,7 +144,7 @@ const Texts = styled.div`
         font-size: 20px;
         line-height: 100%; 
         text-align: center;
-        color: black;
+        color: white;
     }
 
     @media (max-width: 1024px) {
@@ -228,7 +228,7 @@ const PageButtons = styled.div`
 const Page1Button1 = styled.div`
     width: 200px;
     height: 40px;
-    background-color: transparent;
+    background-color: #FFFFFF;
     border-radius: 8px;
     padding: 5px;
     display: flex;
@@ -236,8 +236,6 @@ const Page1Button1 = styled.div`
     align-items: center;
     cursor: pointer;
     transition: all 0.2s;
-    border: 1px solid black;
-    
 
      &:hover {
         transform: scale(1.05);
@@ -316,7 +314,7 @@ const Page1Button2 = styled.div`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 1px solid #2400FF;
+    border: 1px solid white;
     cursor: pointer;
     transition: all 0.2s;
 
@@ -329,7 +327,7 @@ const Page1Button2 = styled.div`
     }
 
     p{
-        color: black;
+        color: white;
         font-family: 'Geist', SemiBold;
         font-weight: 600;
         font-size: 16px;

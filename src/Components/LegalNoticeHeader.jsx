@@ -124,10 +124,40 @@ const HeaderDiv = styled.div`
 
 const Logo = styled.div`
     cursor: pointer;
-    img{
+    
+    img {
         background-color: transparent;
+        border-radius: 10px;
         height: 70px;
         width: auto;
+        animation: heartbeat 1.6s ease-in-out infinite;
+        transform-origin: center center;
+        will-change: transform;
+        /* filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4)); */
+    }
+
+    @keyframes heartbeat {
+        0%, 100% {
+            transform: scale(1);
+        }
+        10% {
+            transform: scale(1.02); /* Tiny prep for realism */
+        }
+        20% {
+            transform: scale(1.15); /* Strong pump – this is where it grows noticeably larger */
+        }
+        35% {
+            transform: scale(1.08); /* Quick settle after first beat */
+        }
+        45% {
+            transform: scale(1.12); /* Softer second beat – still grows, but less intense */
+        }
+        60% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(1);
+        }
     }
 
     @media (max-width: 2560px) {

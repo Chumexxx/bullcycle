@@ -74,6 +74,7 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #030013;
 
     @media (max-width: 768px) {
         margin-top: 20px;
@@ -130,7 +131,7 @@ const Logo = styled.div`
         /* filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4)); */
     }
 
-     @keyframes heartbeat {
+    @keyframes heartbeat {
         0%, 100% {
             transform: scale(1);
         }
@@ -201,7 +202,7 @@ const Hamburger = styled.div`
     span {
         width: 25px;
         height: 3px;
-        background-color: black;
+        background-color: white;
         margin: 3px 0;
         transition: all 0.3s ease;
         border-radius: 3px;
@@ -257,7 +258,7 @@ const Tags = styled.div`
         font-size: 16px;
         line-height: 100%;
         text-decoration: none;
-        color: black;
+        color: white;
         transition: opacity 0.2s;
 
         &:hover {
