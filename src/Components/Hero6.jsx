@@ -605,7 +605,7 @@ const AICards = styled.div`
     scroll-behavior: smooth;
     padding: 10px 0;
     margin-bottom: 50px;
-    -webkit-overflow-scrolling: touch;
+    /* -webkit-overflow-scrolling: touch; */
 
     &::-webkit-scrollbar {
         display: none;
@@ -631,8 +631,8 @@ const AICards = styled.div`
     @media (max-width: 480px) {
         gap: 10px;
         margin-bottom: 25px;
-        -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
-        will-change: scroll-position; 
+        /* -webkit-overflow-scrolling: touch; */
+        /* will-change: scroll-position;  */
     }
 
     @media (max-width: 425px) {
