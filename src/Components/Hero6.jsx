@@ -189,75 +189,114 @@ const Hero6 = () => {
     }
 
     // Auto-scroll functionality for mobile with bidirectional scrolling
-    useEffect(() => {
-        let isUserInteracting = false
-
-        const startAutoScroll = () => {
-            if (window.innerWidth <= 480 && scrollRef.current && !isUserInteracting) {
-                autoScrollInterval.current = setInterval(() => {
-                    if (scrollRef.current && !isUserInteracting) {
-                        const scrollContainer = scrollRef.current
-                        const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth
-                        const currentScroll = scrollContainer.scrollLeft
-                        
-                        // Check if we've reached the end (right side)
-                        if (currentScroll >= maxScroll - 5) {
-                            scrollDirection.current = -1 // Change direction to left
+        useEffect(() => {
+            let isUserInteracting = false
+            let lastTouchTime = 0
+            let resumeTimeout = null
+    
+            const startAutoScroll = () => {
+                if (window.innerWidth <= 480 && scrollRef.current && !isUserInteracting) {
+                    autoScrollInterval.current = setInterval(() => {
+                        if (scrollRef.current && !isUserInteracting) {
+                            const scrollContainer = scrollRef.current
+                            const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth
+                            const currentScroll = scrollContainer.scrollLeft
+                            
+                            // Check if we've reached the end (right side)
+                            if (currentScroll >= maxScroll - 5) {
+                                scrollDirection.current = -1 // Change direction to left
+                            }
+                            // Check if we've reached the beginning (left side)
+                            else if (currentScroll <= 5) {
+                                scrollDirection.current = 1 // Change direction to right
+                            }
+                            
+                            // Scroll in the current direction - use scrollLeft for iOS compatibility
+                            scrollContainer.scrollLeft += scrollDirection.current * 3
                         }
-                        // Check if we've reached the beginning (left side)
-                        else if (currentScroll <= 5) {
-                            scrollDirection.current = 1 // Change direction to right
-                        }
-                        
-                        // Scroll in the current direction
-                        scrollContainer.scrollBy({ 
-                            left: scrollDirection.current * 3, 
-                            behavior: 'auto' 
-                        })
-                    }
-                }, 20)
+                    }, 20)
+                }
             }
-        }
-
-        const stopAutoScroll = () => {
-            if (autoScrollInterval.current) {
-                clearInterval(autoScrollInterval.current)
-                autoScrollInterval.current = null
+    
+            const stopAutoScroll = () => {
+                if (autoScrollInterval.current) {
+                    clearInterval(autoScrollInterval.current)
+                    autoScrollInterval.current = null
+                }
+                if (resumeTimeout) {
+                    clearTimeout(resumeTimeout)
+                    resumeTimeout = null
+                }
             }
-        }
-
-        // Start auto-scroll on mobile
-        startAutoScroll()
-
-        // Stop auto-scroll when user touches
-        const handleTouchStart = () => {
-            isUserInteracting = true
-            stopAutoScroll()
-        }
-
-        const handleTouchEnd = () => {
-            setTimeout(() => {
-                isUserInteracting = false
+    
+            const scheduleResume = () => {
+                // Clear any existing resume timeout
+                if (resumeTimeout) {
+                    clearTimeout(resumeTimeout)
+                }
+                
+                // Schedule auto-scroll to resume after 20 seconds
+                resumeTimeout = setTimeout(() => {
+                    isUserInteracting = false
+                    startAutoScroll()
+                }, 20000)
+            }
+    
+            // Start auto-scroll on mobile
+            if (window.innerWidth <= 480) {
                 startAutoScroll()
-            }, 20000) // Resume after 20 seconds of no interaction
-        }
-
-        const scrollContainer = scrollRef.current
-
-        if (scrollContainer && window.innerWidth <= 480) {
-            scrollContainer.addEventListener('touchstart', handleTouchStart, { passive: true })
-            scrollContainer.addEventListener('touchend', handleTouchEnd, { passive: true })
-        }
-
-        // Cleanup
-        return () => {
-            stopAutoScroll()
-            if (scrollContainer) {
-                scrollContainer.removeEventListener('touchstart', handleTouchStart)
-                scrollContainer.removeEventListener('touchend', handleTouchEnd)
             }
-        }
-    }, [])
+    
+            // Handle any touch interaction
+            const handleTouchStart = (e) => {
+                isUserInteracting = true
+                lastTouchTime = Date.now()
+                stopAutoScroll()
+            }
+    
+            const handleTouchMove = (e) => {
+                isUserInteracting = true
+                lastTouchTime = Date.now()
+                stopAutoScroll()
+                scheduleResume()
+            }
+    
+            const handleTouchEnd = (e) => {
+                lastTouchTime = Date.now()
+                scheduleResume()
+            }
+    
+            // Also handle scroll events for extra safety
+            const handleScroll = () => {
+                if (Date.now() - lastTouchTime < 100) {
+                    // User is actively scrolling
+                    isUserInteracting = true
+                    stopAutoScroll()
+                    scheduleResume()
+                }
+            }
+    
+            const scrollContainer = scrollRef.current
+    
+            if (scrollContainer && window.innerWidth <= 480) {
+                // Add all event listeners with passive: false for better iOS support
+                scrollContainer.addEventListener('touchstart', handleTouchStart, { passive: false })
+                scrollContainer.addEventListener('touchmove', handleTouchMove, { passive: false })
+                scrollContainer.addEventListener('touchend', handleTouchEnd, { passive: false })
+                scrollContainer.addEventListener('scroll', handleScroll, { passive: true })
+            }
+    
+            // Cleanup
+            return () => {
+                stopAutoScroll()
+                if (scrollContainer) {
+                    scrollContainer.removeEventListener('touchstart', handleTouchStart)
+                    scrollContainer.removeEventListener('touchmove', handleTouchMove)
+                    scrollContainer.removeEventListener('touchend', handleTouchEnd)
+                    scrollContainer.removeEventListener('scroll', handleScroll)
+                }
+            }
+        }, [])
 
   return (
     <Wrapper id="hero6">
@@ -566,6 +605,7 @@ const AICards = styled.div`
     scroll-behavior: smooth;
     padding: 10px 0;
     margin-bottom: 50px;
+    -webkit-overflow-scrolling: touch;
 
     &::-webkit-scrollbar {
         display: none;
@@ -591,6 +631,8 @@ const AICards = styled.div`
     @media (max-width: 480px) {
         gap: 10px;
         margin-bottom: 25px;
+        -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+        will-change: scroll-position; 
     }
 
     @media (max-width: 425px) {
