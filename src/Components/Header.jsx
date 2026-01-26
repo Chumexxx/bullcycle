@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import bullcycle from '../assets/bullcycle.svg'
+import bullcycle from '../assets/logo.svg'
 import styled from 'styled-components'
 
 const Header = () => {

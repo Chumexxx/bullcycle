@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import globe from '../assets/globe.svg'
-import bullcycle from '../assets/bullcycle.svg'
+import bullcycle from '../assets/logo.svg'
 import { Link, useNavigate } from 'react-router-dom';
 
 const LegalNoticeFooter = () => {

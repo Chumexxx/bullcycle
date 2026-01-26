@@ -133,7 +133,7 @@ const Texts = styled.div`
     h1{
         font-family: 'Bebas Neue', sans-serif;
         font-weight: 400;
-        font-size: 90px;
+        font-size: 85px;
         line-height: 100%;
         color: white;
     }
